@@ -9,6 +9,8 @@ $googleChromeURL = "https://raw.githubusercontent.com/charliehoward/CRC-Installe
 $googleChromePath = "C:\Computer Repair Centre\googleChrome.ico"
 $kasperskyInternetSecurityURL = "https://raw.githubusercontent.com/charliehoward/CRC-Installer-PS/master/assets/kasperskyInternetSecurity.ico"
 $kasperskyInternetSecurityPath = "C:\Computer Repair Centre\kasperskyInternetSecurity.ico"
+$kasperskyInternetSecurityChocoURL = "https://raw.githubusercontent.com/charliehoward/CRC-Installer-PS/master/assets/kis.nupkg"
+$kasperskyInternetSecurityChocoPath = "C:\Computer Repair Centre\kis.nupkg"
 $libreOfficeURL = "https://raw.githubusercontent.com/charliehoward/CRC-Installer-PS/master/assets/libreOffice.ico"
 $libreOfficePath = "C:\Computer Repair Centre\libreOffice.ico"
 $mozillaFirefoxURL = "https://raw.githubusercontent.com/charliehoward/CRC-Installer-PS/master/assets/mozillaFirefox.ico"
@@ -24,6 +26,7 @@ Invoke-RestMethod -Uri $crcURL -OutFile $crcPath
 Invoke-RestMethod -Uri $7zipURL -OutFile $7zipPath
 Invoke-RestMethod -Uri $googleChromeURL -OutFile $googleChromePath
 Invoke-RestMethod -Uri $kasperskyInternetSecurityURL -OutFile $kasperskyInternetSecurityPath
+Invoke-RestMethod -Uri $kasperskyInternetSecurityChocoURL -OutFile $kasperskyInternetSecurityChocoPath
 Invoke-RestMethod -Uri $libreOfficeURL -OutFile $libreOfficePath
 Invoke-RestMethod -Uri $mozillaFirefoxURL -OutFile $mozillaFirefoxPath
 Invoke-RestMethod -Uri $teamViewerURL -OutFile $teamViewerPath
@@ -431,21 +434,21 @@ $user = $env:UserName
 				}
 			}
 		if ($kaspersky.Checked)	{
-			$progress.Items.Add("Kaspersky Internet Security 2017 is checked."  )
+			$progress.Items.Add("Kaspersky Internet Security 2018 is checked."  )
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
-			$progress.Items.Add("Starting installation of Kaspersky Internet Security 2017 ...")
+			$progress.Items.Add("Starting installation of Kaspersky Internet Security 2018 ...")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
-			choco install kis -y --ignore-checksum
+			choco install "C:\Computer Repair Centre\kis.nupkg" -y --ignore-checksum
 			$Programs = choco list --localonly
 			if ($Programs -like '*kis*') {
-				$progress.Items.Add("Completed installation of Kaspersky Internet Security 2017.")
+				$progress.Items.Add("Completed installation of Kaspersky Internet Security 2018.")
 				$progress.SelectedIndex = $progress.Items.Count - 1;
 				$progress.SelectedIndex = -1;
 				}
 			else {
-				$progress.Items.Add("The installation of Kaspersky Internet Security 2017 has failed.")
+				$progress.Items.Add("The installation of Kaspersky Internet Security 2018 has failed.")
 				$progress.SelectedIndex = $progress.Items.Count - 1;
 				$progress.SelectedIndex = -1;
 				}
@@ -634,7 +637,7 @@ $user = $env:UserName
 	}
 
 #Main form
-	$installer.Text = "CRC Installer v2.0.0"
+	$installer.Text = "CRC Installer v2.0.1"
 	$installer.Name = "form1"
 	$installer.DataBindings.DefaultDataSourceUpdateMode = 0
 	$System_Drawing_Size = New-Object System.Drawing.Size
@@ -692,74 +695,6 @@ $user = $env:UserName
 	$crc.Image = [System.Drawing.Image]::FromFile("C:\Computer Repair Centre\crc.ico")
 	$installer.Controls.Add($crc)
 
-#Mozilla Firefox
-	$mozillaFirefox.UseVisualStyleBackColor = $True
-	$System_Drawing_Size = New-Object System.Drawing.Size
-	$System_Drawing_Size.Width = 36
-	$System_Drawing_Size.Height = 24
-	$mozillaFirefox.Size = $System_Drawing_Size
-	$mozillaFirefox.TabIndex = 1
-	$System_Drawing_Point = New-Object System.Drawing.Point
-	$System_Drawing_Point.X = 27
-	$System_Drawing_Point.Y = 199
-	$mozillaFirefox.Location = $System_Drawing_Point
-	$mozillaFirefox.DataBindings.DefaultDataSourceUpdateMode = 0
-	$mozillaFirefox.Name = "mozillaFirefox"
-	$mozillaFirefox.Checked = 1
-	$mozillaFirefox.Image = [System.Drawing.Image]::FromFile("C:\Computer Repair Centre\mozillaFirefox.ico")
-	$installer.Controls.Add($mozillaFirefox)
-
-#Google Chrome
-	$googleChrome.UseVisualStyleBackColor = $True
-	$System_Drawing_Size = New-Object System.Drawing.Size
-	$System_Drawing_Size.Width = 36
-	$System_Drawing_Size.Height = 24
-	$googleChrome.Size = $System_Drawing_Size
-	$googleChrome.TabIndex = 2
-	$System_Drawing_Point = New-Object System.Drawing.Point
-	$System_Drawing_Point.X = 27
-	$System_Drawing_Point.Y = 106
-	$googleChrome.Location = $System_Drawing_Point
-	$googleChrome.DataBindings.DefaultDataSourceUpdateMode = 0
-	$googleChrome.Name = "googleChrome"
-	$googleChrome.Checked = 1
-	$googleChrome.Image = [System.Drawing.Image]::FromFile("C:\Computer Repair Centre\googleChrome.ico")
-	$installer.Controls.Add($googleChrome)
-
-#Kaspersky Internet Security 2017
-	$kaspersky.UseVisualStyleBackColor = $True
-	$System_Drawing_Size = New-Object System.Drawing.Size
-	$System_Drawing_Size.Width = 36
-	$System_Drawing_Size.Height = 24
-	$kaspersky.Size = $System_Drawing_Size
-	$kaspersky.TabIndex = 3
-	$System_Drawing_Point = New-Object System.Drawing.Point
-	$System_Drawing_Point.X = 27
-	$System_Drawing_Point.Y = 137
-	$kaspersky.Location = $System_Drawing_Point
-	$kaspersky.DataBindings.DefaultDataSourceUpdateMode = 0
-	$kaspersky.Name = "kaspersky"
-	$kaspersky.Checked = 1
-	$kaspersky.Image = [System.Drawing.Image]::FromFile("C:\Computer Repair Centre\kasperskyInternetSecurity.ico")
-	$installer.Controls.Add($kaspersky)
-
-#VLC Media Player
-	$vlc.UseVisualStyleBackColor = $True
-	$System_Drawing_Size = New-Object System.Drawing.Size
-	$System_Drawing_Size.Width = 36
-	$System_Drawing_Size.Height = 24
-	$vlc.Size = $System_Drawing_Size
-	$vlc.TabIndex = 4
-	$System_Drawing_Point = New-Object System.Drawing.Point
-	$System_Drawing_Point.X = 27
-	$System_Drawing_Point.Y = 261
-	$vlc.Location = $System_Drawing_Point
-	$vlc.DataBindings.DefaultDataSourceUpdateMode = 0
-	$vlc.Name = "vlc"
-	$vlc.Checked = 1
-	$vlc.Image = [System.Drawing.Image]::FromFile("C:\Computer Repair Centre\vlcMediaPlayer.ico")
-	$installer.Controls.Add($vlc)
-
 #7zip
 	$7zip.UseVisualStyleBackColor = $True
 	$System_Drawing_Size = New-Object System.Drawing.Size
@@ -777,6 +712,74 @@ $user = $env:UserName
 	$7zip.Image = [System.Drawing.Image]::FromFile("C:\Computer Repair Centre\7zip.ico")
 	$installer.Controls.Add($7zip)
 
+#Mozilla Firefox
+	$mozillaFirefox.UseVisualStyleBackColor = $True
+	$System_Drawing_Size = New-Object System.Drawing.Size
+	$System_Drawing_Size.Width = 36
+	$System_Drawing_Size.Height = 24
+	$mozillaFirefox.Size = $System_Drawing_Size
+	$mozillaFirefox.TabIndex = 1
+	$System_Drawing_Point = New-Object System.Drawing.Point
+	$System_Drawing_Point.X = 27
+	$System_Drawing_Point.Y = 168
+	$mozillaFirefox.Location = $System_Drawing_Point
+	$mozillaFirefox.DataBindings.DefaultDataSourceUpdateMode = 0
+	$mozillaFirefox.Name = "mozillaFirefox"
+	$mozillaFirefox.Checked = 1
+	$mozillaFirefox.Image = [System.Drawing.Image]::FromFile("C:\Computer Repair Centre\mozillaFirefox.ico")
+	$installer.Controls.Add($mozillaFirefox)
+
+#Google Chrome
+	$googleChrome.UseVisualStyleBackColor = $True
+	$System_Drawing_Size = New-Object System.Drawing.Size
+	$System_Drawing_Size.Width = 36
+	$System_Drawing_Size.Height = 24
+	$googleChrome.Size = $System_Drawing_Size
+	$googleChrome.TabIndex = 2
+	$System_Drawing_Point = New-Object System.Drawing.Point
+	$System_Drawing_Point.X = 27
+	$System_Drawing_Point.Y = 75
+	$googleChrome.Location = $System_Drawing_Point
+	$googleChrome.DataBindings.DefaultDataSourceUpdateMode = 0
+	$googleChrome.Name = "googleChrome"
+	$googleChrome.Checked = 1
+	$googleChrome.Image = [System.Drawing.Image]::FromFile("C:\Computer Repair Centre\googleChrome.ico")
+	$installer.Controls.Add($googleChrome)
+
+#Kaspersky Internet Security 2018
+	$kaspersky.UseVisualStyleBackColor = $True
+	$System_Drawing_Size = New-Object System.Drawing.Size
+	$System_Drawing_Size.Width = 36
+	$System_Drawing_Size.Height = 24
+	$kaspersky.Size = $System_Drawing_Size
+	$kaspersky.TabIndex = 3
+	$System_Drawing_Point = New-Object System.Drawing.Point
+	$System_Drawing_Point.X = 27
+	$System_Drawing_Point.Y = 106
+	$kaspersky.Location = $System_Drawing_Point
+	$kaspersky.DataBindings.DefaultDataSourceUpdateMode = 0
+	$kaspersky.Name = "kaspersky"
+	$kaspersky.Checked = 1
+	$kaspersky.Image = [System.Drawing.Image]::FromFile("C:\Computer Repair Centre\kasperskyInternetSecurity.ico")
+	$installer.Controls.Add($kaspersky)
+
+#VLC Media Player
+	$vlc.UseVisualStyleBackColor = $True
+	$System_Drawing_Size = New-Object System.Drawing.Size
+	$System_Drawing_Size.Width = 36
+	$System_Drawing_Size.Height = 24
+	$vlc.Size = $System_Drawing_Size
+	$vlc.TabIndex = 4
+	$System_Drawing_Point = New-Object System.Drawing.Point
+	$System_Drawing_Point.X = 27
+	$System_Drawing_Point.Y = 230
+	$vlc.Location = $System_Drawing_Point
+	$vlc.DataBindings.DefaultDataSourceUpdateMode = 0
+	$vlc.Name = "vlc"
+	$vlc.Checked = 1
+	$vlc.Image = [System.Drawing.Image]::FromFile("C:\Computer Repair Centre\vlcMediaPlayer.ico")
+	$installer.Controls.Add($vlc)
+
 #LibreOffice
 	$libreOffice.UseVisualStyleBackColor = $True
 	$System_Drawing_Size = New-Object System.Drawing.Size
@@ -786,7 +789,7 @@ $user = $env:UserName
 	$libreOffice.TabIndex = 6
 	$System_Drawing_Point = New-Object System.Drawing.Point
 	$System_Drawing_Point.X = 27
-	$System_Drawing_Point.Y = 168
+	$System_Drawing_Point.Y = 137
 	$libreOffice.Location = $System_Drawing_Point
 	$libreOffice.DataBindings.DefaultDataSourceUpdateMode = 0
 	$libreOffice.Name = "libreOffice"
@@ -803,7 +806,7 @@ $user = $env:UserName
 	$teamViewer.TabIndex = 7
 	$System_Drawing_Point = New-Object System.Drawing.Point
 	$System_Drawing_Point.X = 27
-	$System_Drawing_Point.Y = 230
+	$System_Drawing_Point.Y = 199
 	$teamViewer.Location = $System_Drawing_Point
 	$teamViewer.DataBindings.DefaultDataSourceUpdateMode = 0
 	$teamViewer.Name = "teamViewer"

@@ -1,14 +1,18 @@
-# CRC Installer PowerShell 2.0.0
+# CRC Installer PowerShell 2.0.1
 
 When run you will get a form that allows to select what programs you wish to install.
 
-Can install the CRC OEM information, 7-zip, Google Chrome, Kaspersky Internet Security 2017, LibreOffice, Microsoft DotNet 4.5, Microsoft DotNet 4.6.1, Mozilla Firefox, PowerShell 5, TeamViewer & VLC Media Player.
+Can install the CRC OEM information, 7-zip, Google Chrome, Kaspersky Internet Security 2018, LibreOffice, Microsoft DotNet 4.5, Microsoft DotNet 4.6.1, Mozilla Firefox, PowerShell 5, TeamViewer & VLC Media Player.
 
 If run on Windows 8 and 8.1 it also changes the default Explorer page to "This PC".
 
 If run on Windows 10 it also disables Windows 10 hibernation mode, Wi-Fi sense, and changes the default Explorer page to "This PC".
 
 Will check for previous installation of Windows and then copy over the old Users folder to the Desktop.
+
+# Update 2.0.1
+
+Added Kaspersky Internet Security 2018 & changed spacing for icons.
 
 # Update 2.0.0
 
