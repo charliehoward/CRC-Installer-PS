@@ -440,7 +440,7 @@ $user = $env:UserName
 			$progress.Items.Add("Starting installation of Kaspersky Internet Security 2018 ...")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
-			choco install "C:\Computer Repair Centre\kis.nupkg" -y --ignore-checksum
+			choco install kis -y --ignore-checksum
 			$Programs = choco list --localonly
 			if ($Programs -like '*kis*') {
 				$progress.Items.Add("Completed installation of Kaspersky Internet Security 2018.")
@@ -637,7 +637,7 @@ $user = $env:UserName
 	}
 
 #Main form
-	$installer.Text = "CRC Installer v2.0.1"
+	$installer.Text = "CRC Installer v2.0.2"
 	$installer.Name = "form1"
 	$installer.DataBindings.DefaultDataSourceUpdateMode = 0
 	$System_Drawing_Size = New-Object System.Drawing.Size

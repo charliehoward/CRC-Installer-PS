@@ -1,4 +1,5 @@
-New-Item -ItemType directory -Path "C:\Computer Repair Centre\"
+Set-ExecutionPolicy RemoteSigned
+New-Item -ItemType directory -Path "C:\Computer Repair Centre\" | Out-Null
 $mainURL = "https://raw.githubusercontent.com/charliehoward/CRC-Installer-PS/master/main.ps1"
 $mainPath = "C:\Computer Repair Centre\main.ps1"
 $iconURL = "https://raw.githubusercontent.com/charliehoward/CRC-Installer-PS/master/assets/crc.ico"
