@@ -336,7 +336,7 @@ $user = $env:UserName
 		$progress.Items.Add("Starting installation of Chocolately ...")
 		$progress.SelectedIndex = $progress.Items.Count - 1;
 		$progress.SelectedIndex = -1;
-		iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+		iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1')) | Out-Null
 		$Programs = choco list --localonly
 		if ($Programs -like '*chocolatey*') {
 			$progress.Items.Add("Completed installation of Chocolatey.")
