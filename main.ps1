@@ -761,6 +761,23 @@ $randomWallpaper = Get-ChildItem -Recurse $wallpaperFolder |where {$_.Extension 
 	$crc.Image = [System.Drawing.Image]::FromFile("C:\Computer Repair Centre\crc.ico")
 	$installer.Controls.Add($crc)
 
+#Wallpaper
+	$wallpaper.UseVisualStyleBackColor = $True
+	$System_Drawing_Size = New-Object System.Drawing.Size
+	$System_Drawing_Size.Width = 36
+	$System_Drawing_Size.Height = 24
+	$wallpaper.Size = $System_Drawing_Size
+	$wallpaper.TabIndex = 4
+	$System_Drawing_Point = New-Object System.Drawing.Point
+	$System_Drawing_Point.X = 27
+	$System_Drawing_Point.Y = 44
+	$wallpaper.Location = $System_Drawing_Point
+	$wallpaper.DataBindings.DefaultDataSourceUpdateMode = 0
+	$wallpaper.Name = "vlc"
+	$wallpaper.Checked = 1
+	$wallpaper.Image = [System.Drawing.Image]::FromFile("C:\Computer Repair Centre\wallpaper.ico")
+	$installer.Controls.Add($wallpaper)
+
 #7zip
 	$7zip.UseVisualStyleBackColor = $True
 	$System_Drawing_Size = New-Object System.Drawing.Size
@@ -770,7 +787,7 @@ $randomWallpaper = Get-ChildItem -Recurse $wallpaperFolder |where {$_.Extension 
 	$7zip.TabIndex = 5
 	$System_Drawing_Point = New-Object System.Drawing.Point
 	$System_Drawing_Point.X = 27
-	$System_Drawing_Point.Y = 44
+	$System_Drawing_Point.Y = 75
 	$7zip.Location = $System_Drawing_Point
 	$7zip.DataBindings.DefaultDataSourceUpdateMode = 0
 	$7zip.Name = "7zip"
@@ -787,7 +804,7 @@ $randomWallpaper = Get-ChildItem -Recurse $wallpaperFolder |where {$_.Extension 
 	$mozillaFirefox.TabIndex = 1
 	$System_Drawing_Point = New-Object System.Drawing.Point
 	$System_Drawing_Point.X = 27
-	$System_Drawing_Point.Y = 168
+	$System_Drawing_Point.Y = 199
 	$mozillaFirefox.Location = $System_Drawing_Point
 	$mozillaFirefox.DataBindings.DefaultDataSourceUpdateMode = 0
 	$mozillaFirefox.Name = "mozillaFirefox"
@@ -804,7 +821,7 @@ $randomWallpaper = Get-ChildItem -Recurse $wallpaperFolder |where {$_.Extension 
 	$googleChrome.TabIndex = 2
 	$System_Drawing_Point = New-Object System.Drawing.Point
 	$System_Drawing_Point.X = 27
-	$System_Drawing_Point.Y = 75
+	$System_Drawing_Point.Y = 106
 	$googleChrome.Location = $System_Drawing_Point
 	$googleChrome.DataBindings.DefaultDataSourceUpdateMode = 0
 	$googleChrome.Name = "googleChrome"
@@ -821,7 +838,7 @@ $randomWallpaper = Get-ChildItem -Recurse $wallpaperFolder |where {$_.Extension 
 	$kaspersky.TabIndex = 3
 	$System_Drawing_Point = New-Object System.Drawing.Point
 	$System_Drawing_Point.X = 27
-	$System_Drawing_Point.Y = 106
+	$System_Drawing_Point.Y = 137
 	$kaspersky.Location = $System_Drawing_Point
 	$kaspersky.DataBindings.DefaultDataSourceUpdateMode = 0
 	$kaspersky.Name = "kaspersky"
@@ -838,7 +855,7 @@ $randomWallpaper = Get-ChildItem -Recurse $wallpaperFolder |where {$_.Extension 
 	$vlc.TabIndex = 4
 	$System_Drawing_Point = New-Object System.Drawing.Point
 	$System_Drawing_Point.X = 27
-	$System_Drawing_Point.Y = 230
+	$System_Drawing_Point.Y = 261
 	$vlc.Location = $System_Drawing_Point
 	$vlc.DataBindings.DefaultDataSourceUpdateMode = 0
 	$vlc.Name = "vlc"
@@ -855,7 +872,7 @@ $randomWallpaper = Get-ChildItem -Recurse $wallpaperFolder |where {$_.Extension 
 	$libreOffice.TabIndex = 6
 	$System_Drawing_Point = New-Object System.Drawing.Point
 	$System_Drawing_Point.X = 27
-	$System_Drawing_Point.Y = 137
+	$System_Drawing_Point.Y = 168
 	$libreOffice.Location = $System_Drawing_Point
 	$libreOffice.DataBindings.DefaultDataSourceUpdateMode = 0
 	$libreOffice.Name = "libreOffice"
@@ -872,30 +889,13 @@ $randomWallpaper = Get-ChildItem -Recurse $wallpaperFolder |where {$_.Extension 
 	$teamViewer.TabIndex = 7
 	$System_Drawing_Point = New-Object System.Drawing.Point
 	$System_Drawing_Point.X = 27
-	$System_Drawing_Point.Y = 199
+	$System_Drawing_Point.Y = 230
 	$teamViewer.Location = $System_Drawing_Point
 	$teamViewer.DataBindings.DefaultDataSourceUpdateMode = 0
 	$teamViewer.Name = "teamViewer"
 	$teamViewer.Checked = 1
 	$teamViewer.Image = [System.Drawing.Image]::FromFile("C:\Computer Repair Centre\teamViewer.ico")
 	$installer.Controls.Add($teamViewer)
-
-#Wallpaper
-		$wallpaper.UseVisualStyleBackColor = $True
-		$System_Drawing_Size = New-Object System.Drawing.Size
-		$System_Drawing_Size.Width = 36
-		$System_Drawing_Size.Height = 24
-		$wallpaper.Size = $System_Drawing_Size
-		$wallpaper.TabIndex = 4
-		$System_Drawing_Point = New-Object System.Drawing.Point
-		$System_Drawing_Point.X = 27
-		$System_Drawing_Point.Y = 261
-		$wallpaper.Location = $System_Drawing_Point
-		$wallpaper.DataBindings.DefaultDataSourceUpdateMode = 0
-		$wallpaper.Name = "vlc"
-		$wallpaper.Checked = 1
-		$wallpaper.Image = [System.Drawing.Image]::FromFile("C:\Computer Repair Centre\wallpaper.ico")
-		$installer.Controls.Add($wallpaper)
 
 #Save the initial state of the form
 	$InitialFormWindowState = $installer.WindowState
