@@ -8,6 +8,7 @@ $Form = New-Object system.Windows.Forms.Form
 $Form.ClientSize = '359,110'
 $Form.text = "CRC Installer"
 $Form.TopMost = $false
+$Form.Icon = "C:\Computer Repair Centre\crc.ico"
 $restart = New-Object system.Windows.Forms.Button
 $restart.text = "Restart"
 $restart.width = 60

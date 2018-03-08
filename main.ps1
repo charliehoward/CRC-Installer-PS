@@ -21,6 +21,8 @@ $vlcMediaPlayerURL = "https://raw.githubusercontent.com/charliehoward/CRC-Instal
 $vlcMediaPlayerPath = "C:\Computer Repair Centre\vlcMediaPlayer.ico"
 $birthdayURL = "https://raw.githubusercontent.com/charliehoward/CRC-Installer-PS/master/assets/birthday.gif"
 $birthdayPath = "C:\Computer Repair Centre\birthday.gif"
+$wallpaperURL = "https://raw.githubusercontent.com/charliehoward/CRC-Installer-PS/master/assets/wallpaper.ico"
+$wallpaperPath = "C:\Computer Repair Centre\wallpaper.ico"
 $wallpaper1URL = "https://raw.githubusercontent.com/charliehoward/CRC-Installer-PS/master/assets/wallpapers/wallpaper1.jpg"
 $wallpaper1Path = "C:\Computer Repair Centre\Wallpapers\wallpaper1.jpg"
 $wallpaper2URL = "https://raw.githubusercontent.com/charliehoward/CRC-Installer-PS/master/assets/wallpapers/wallpaper2.jpg"
@@ -53,6 +55,7 @@ Invoke-RestMethod -Uri $mozillaFirefoxURL -OutFile $mozillaFirefoxPath
 Invoke-RestMethod -Uri $teamViewerURL -OutFile $teamViewerPath
 Invoke-RestMethod -Uri $vlcMediaPlayerURL -OutFile $vlcMediaPlayerPath
 Invoke-RestMethod -Uri $birthdayURL -OutFile $birthdayPath
+Invoke-RestMethod -Uri $wallpaperURL -OutFile $wallpaperPath
 Invoke-RestMethod -Uri $wallpaper1URL -OutFile $wallpaper1Path
 Invoke-RestMethod -Uri $wallpaper2URL -OutFile $wallpaper2Path
 Invoke-RestMethod -Uri $wallpaper3URL -OutFile $wallpaper3Path
@@ -95,8 +98,7 @@ $randomWallpaper = Get-ChildItem -Recurse $wallpaperFolder |where {$_.Extension 
 	$7zip = New-Object System.Windows.Forms.CheckBox
 	$libreOffice = New-Object System.Windows.Forms.CheckBox
 	$teamViewer = New-Object System.Windows.Forms.CheckBox
-	$ApacheOpenOffice = New-Object System.Windows.Forms.CheckBox
-	$wpsOffice = New-Object System.Windows.Forms.CheckBox
+	$wallpaper = New-Object System.Windows.Forms.CheckBox
 	$InitialFormWindowState = New-Object System.Windows.Forms.FormWindowState
 	$b1= $false
 	$b2= $false
@@ -573,6 +575,17 @@ $randomWallpaper = Get-ChildItem -Recurse $wallpaperFolder |where {$_.Extension 
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
 			}
+		if ($wallpaper.Checked)	{
+				$progress.Items.Add("Random wallpaper is checked."  )
+				$progress.SelectedIndex = $progress.Items.Count - 1;
+				$progress.SelectedIndex = -1;
+				$progress.Items.Add("Setting random wallpaper (You may have to reboot to see effects) ...")
+				$progress.SelectedIndex = $progress.Items.Count - 1;
+				$progress.SelectedIndex = -1;
+				Set-ItemProperty -path 'HKCU:\Control Panel\Desktop\' -name Wallpaper -value $randomWallpaper.FullName
+				Start-Sleep -s 5
+				rundll32.exe user32.dll, UpdatePerUserSystemParameters
+				}
 		if ($os -like '*6.1*')	{
 			$progress.Items.Add("This computer is running Windows 7.")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
@@ -589,11 +602,6 @@ $randomWallpaper = Get-ChildItem -Recurse $wallpaperFolder |where {$_.Extension 
 			$progress.SelectedIndex = -1;
 			Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\Shell\Bags\1\Desktop" -Name "FFlags" -Type DWORD -Value 545
 			$progress.Items.Add("Setting random wallpaper.")
-			$progress.SelectedIndex = $progress.Items.Count - 1;
-			$progress.SelectedIndex = -1;
-			Set-ItemProperty -path 'HKCU:\Control Panel\Desktop\' -name Wallpaper -value $randomWallpaper.FullName
-			Start-Sleep -s 5
-			rundll32.exe user32.dll, UpdatePerUserSystemParameters
 			$progress.Items.Add("The installer has finished! The installer will close in 30 seconds.")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
@@ -613,12 +621,6 @@ $randomWallpaper = Get-ChildItem -Recurse $wallpaperFolder |where {$_.Extension 
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
 			Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\Shell\Bags\1\Desktop" -Name "FFlags" -Type DWORD -Value 545
-			$progress.Items.Add("Setting random wallpaper.")
-			$progress.SelectedIndex = $progress.Items.Count - 1;
-			$progress.SelectedIndex = -1;
-			Set-ItemProperty -path 'HKCU:\Control Panel\Desktop\' -name Wallpaper -value $randomWallpaper.FullName
-			Start-Sleep -s 5
-			rundll32.exe user32.dll, UpdatePerUserSystemParameters
 			$progress.Items.Add("The installer has finished! The installer will close in 30 seconds.")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
@@ -638,12 +640,6 @@ $randomWallpaper = Get-ChildItem -Recurse $wallpaperFolder |where {$_.Extension 
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
 			Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\Shell\Bags\1\Desktop" -Name "FFlags" -Type DWORD -Value 545
-			$progress.Items.Add("Setting random wallpaper.")
-			$progress.SelectedIndex = $progress.Items.Count - 1;
-			$progress.SelectedIndex = -1;
-			Set-ItemProperty -path 'HKCU:\Control Panel\Desktop\' -name Wallpaper -value $randomWallpaper.FullName
-			Start-Sleep -s 5
-			rundll32.exe user32.dll, UpdatePerUserSystemParameters
 			$progress.Items.Add("The installer has finished! The installer will close in 30 seconds.")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
@@ -693,12 +689,6 @@ $randomWallpaper = Get-ChildItem -Recurse $wallpaperFolder |where {$_.Extension 
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
 			Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\Shell\Bags\1\Desktop" -Name "FFlags" -Type DWORD -Value 545
-			$progress.Items.Add("Setting random wallpaper.")
-			$progress.SelectedIndex = $progress.Items.Count - 1;
-			$progress.SelectedIndex = -1;
-			Set-ItemProperty -path 'HKCU:\Control Panel\Desktop\' -name Wallpaper -value $randomWallpaper.FullName
-			Start-Sleep -s 5
-			rundll32.exe user32.dll, UpdatePerUserSystemParameters
 			$progress.Items.Add("The installer has finished! The installer will close in 30 seconds.")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
@@ -713,7 +703,7 @@ $randomWallpaper = Get-ChildItem -Recurse $wallpaperFolder |where {$_.Extension 
 	}
 
 #Main form
-	$installer.Text = "CRC Installer v2.1.1"
+	$installer.Text = "CRC Installer v2.1.2"
 	$installer.Name = "form1"
 	$installer.DataBindings.DefaultDataSourceUpdateMode = 0
 	$System_Drawing_Size = New-Object System.Drawing.Size
@@ -889,6 +879,23 @@ $randomWallpaper = Get-ChildItem -Recurse $wallpaperFolder |where {$_.Extension 
 	$teamViewer.Checked = 1
 	$teamViewer.Image = [System.Drawing.Image]::FromFile("C:\Computer Repair Centre\teamViewer.ico")
 	$installer.Controls.Add($teamViewer)
+
+#Wallpaper
+		$wallpaper.UseVisualStyleBackColor = $True
+		$System_Drawing_Size = New-Object System.Drawing.Size
+		$System_Drawing_Size.Width = 36
+		$System_Drawing_Size.Height = 24
+		$wallpaper.Size = $System_Drawing_Size
+		$wallpaper.TabIndex = 4
+		$System_Drawing_Point = New-Object System.Drawing.Point
+		$System_Drawing_Point.X = 27
+		$System_Drawing_Point.Y = 261
+		$wallpaper.Location = $System_Drawing_Point
+		$wallpaper.DataBindings.DefaultDataSourceUpdateMode = 0
+		$wallpaper.Name = "vlc"
+		$wallpaper.Checked = 1
+		$wallpaper.Image = [System.Drawing.Image]::FromFile("C:\Computer Repair Centre\wallpaper.ico")
+		$installer.Controls.Add($wallpaper)
 
 #Save the initial state of the form
 	$InitialFormWindowState = $installer.WindowState
