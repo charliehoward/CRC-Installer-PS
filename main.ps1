@@ -587,7 +587,7 @@ $randomWallpaper = Get-ChildItem -Recurse $wallpaperFolder |where {$_.Extension 
 			$progress.Items.Add("Auto-arranging Desktop icons.")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
-			Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\Shell\Bags\1\Desktop" -Name "FFlags" -Type DWord -Value 00000221
+			Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\Shell\Bags\1\Desktop" -Name "FFlags" -Type DWORD -Value 545
 			$progress.Items.Add("Setting random wallpaper.")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
@@ -612,7 +612,7 @@ $randomWallpaper = Get-ChildItem -Recurse $wallpaperFolder |where {$_.Extension 
 			$progress.Items.Add("Auto-arranging Desktop icons.")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
-			Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\Shell\Bags\1\Desktop" -Name "FFlags" -Type DWord -Value 00000221
+			Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\Shell\Bags\1\Desktop" -Name "FFlags" -Type DWORD -Value 545
 			$progress.Items.Add("Setting random wallpaper.")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
@@ -637,7 +637,7 @@ $randomWallpaper = Get-ChildItem -Recurse $wallpaperFolder |where {$_.Extension 
 			$progress.Items.Add("Auto-arranging Desktop icons.")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
-			Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\Shell\Bags\1\Desktop" -Name "FFlags" -Type DWord -Value 00000221
+			Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\Shell\Bags\1\Desktop" -Name "FFlags" -Type DWORD -Value 545
 			$progress.Items.Add("Setting random wallpaper.")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
@@ -692,7 +692,7 @@ $randomWallpaper = Get-ChildItem -Recurse $wallpaperFolder |where {$_.Extension 
 			$progress.Items.Add("Auto-arranging Desktop icons.")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
-			Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\Shell\Bags\1\Desktop" -Name "FFlags" -Type DWord -Value 00000221
+			Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\Shell\Bags\1\Desktop" -Name "FFlags" -Type DWORD -Value 545
 			$progress.Items.Add("Setting random wallpaper.")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
@@ -705,6 +705,7 @@ $randomWallpaper = Get-ChildItem -Recurse $wallpaperFolder |where {$_.Extension 
 			}
 		Start-Sleep -s 30
 		$installer.Close()
+		& "C:\Computer Repair Centre\close.ps1"
 	}
 	$OnLoadForm_StateCorrection=
 	{
@@ -712,7 +713,7 @@ $randomWallpaper = Get-ChildItem -Recurse $wallpaperFolder |where {$_.Extension 
 	}
 
 #Main form
-	$installer.Text = "CRC Installer v2.1.0"
+	$installer.Text = "CRC Installer v2.1.1"
 	$installer.Name = "form1"
 	$installer.DataBindings.DefaultDataSourceUpdateMode = 0
 	$System_Drawing_Size = New-Object System.Drawing.Size
