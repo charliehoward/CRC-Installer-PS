@@ -21,6 +21,8 @@ $vlcMediaPlayerURL = "https://raw.githubusercontent.com/charliehoward/CRC-Instal
 $vlcMediaPlayerPath = "C:\Computer Repair Centre\vlcMediaPlayer.ico"
 $birthdayURL = "https://raw.githubusercontent.com/charliehoward/CRC-Installer-PS/master/assets/birthday.gif"
 $birthdayPath = "C:\Computer Repair Centre\birthday.gif"
+$closeURL = "https://raw.githubusercontent.com/charliehoward/CRC-Installer-PS/master/assets/close.ps1"
+$closePath = "C:\Computer Repair Centre\close.ps1"
 $wallpaperURL = "https://raw.githubusercontent.com/charliehoward/CRC-Installer-PS/master/assets/wallpaper.ico"
 $wallpaperPath = "C:\Computer Repair Centre\wallpaper.ico"
 $wallpaper1URL = "https://raw.githubusercontent.com/charliehoward/CRC-Installer-PS/master/assets/wallpapers/wallpaper1.jpg"
@@ -55,6 +57,7 @@ Invoke-RestMethod -Uri $mozillaFirefoxURL -OutFile $mozillaFirefoxPath
 Invoke-RestMethod -Uri $teamViewerURL -OutFile $teamViewerPath
 Invoke-RestMethod -Uri $vlcMediaPlayerURL -OutFile $vlcMediaPlayerPath
 Invoke-RestMethod -Uri $birthdayURL -OutFile $birthdayPath
+Invoke-RestMethod -Uri $closeURL -OutFile $closePath
 Invoke-RestMethod -Uri $wallpaperURL -OutFile $wallpaperPath
 Invoke-RestMethod -Uri $wallpaper1URL -OutFile $wallpaper1Path
 Invoke-RestMethod -Uri $wallpaper2URL -OutFile $wallpaper2Path
