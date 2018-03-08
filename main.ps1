@@ -41,8 +41,6 @@ $wallpaper9URL = "https://raw.githubusercontent.com/charliehoward/CRC-Installer-
 $wallpaper9Path = "C:\Computer Repair Centre\Wallpapers\wallpaper9.jpg"
 $wallpaper10URL = "https://raw.githubusercontent.com/charliehoward/CRC-Installer-PS/master/assets/wallpapers/wallpaper10.jpg"
 $wallpaper10Path = "C:\Computer Repair Centre\Wallpapers\wallpaper10.jpg"
-$wallpaper11URL = "https://raw.githubusercontent.com/charliehoward/CRC-Installer-PS/master/assets/wallpapers/wallpaper11.jpg"
-$wallpaper11Path = "C:\Computer Repair Centre\Wallpapers\wallpaper11.jpg"
 New-Item -ItemType directory -Path "C:\Computer Repair Centre\Wallpapers" | Out-Null
 Invoke-RestMethod -Uri $sysPinURL -OutFile $sysPinPath
 Invoke-RestMethod -Uri $crcURL -OutFile $crcPath
@@ -65,7 +63,6 @@ Invoke-RestMethod -Uri $wallpaper7URL -OutFile $wallpaper7Path
 Invoke-RestMethod -Uri $wallpaper8URL -OutFile $wallpaper8Path
 Invoke-RestMethod -Uri $wallpaper9URL -OutFile $wallpaper9Path
 Invoke-RestMethod -Uri $wallpaper10URL -OutFile $wallpaper10Path
-Invoke-RestMethod -Uri $wallpaper11URL -OutFile $wallpaper11Path
 
 #Get OS version
 $os = (Get-WmiObject -Class Win32_OperatingSystem).version
