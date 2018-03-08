@@ -21,6 +21,29 @@ $vlcMediaPlayerURL = "https://raw.githubusercontent.com/charliehoward/CRC-Instal
 $vlcMediaPlayerPath = "C:\Computer Repair Centre\vlcMediaPlayer.ico"
 $birthdayURL = "https://raw.githubusercontent.com/charliehoward/CRC-Installer-PS/master/assets/birthday.gif"
 $birthdayPath = "C:\Computer Repair Centre\birthday.gif"
+$wallpaper1URL = "https://raw.githubusercontent.com/charliehoward/CRC-Installer-PS/master/assets/wallpapers/wallpaper1.jpg"
+$wallpaper1Path = "C:\Computer Repair Centre\Wallpapers\wallpaper1.jpg"
+$wallpaper2URL = "https://raw.githubusercontent.com/charliehoward/CRC-Installer-PS/master/assets/wallpapers/wallpaper2.jpg"
+$wallpaper2Path = "C:\Computer Repair Centre\Wallpapers\wallpaper2.jpg"
+$wallpaper3URL = "https://raw.githubusercontent.com/charliehoward/CRC-Installer-PS/master/assets/wallpapers/wallpaper3.jpg"
+$wallpaper3Path = "C:\Computer Repair Centre\Wallpapers\wallpaper3.jpg"
+$wallpaper4URL = "https://raw.githubusercontent.com/charliehoward/CRC-Installer-PS/master/assets/wallpapers/wallpaper4.jpg"
+$wallpaper4Path = "C:\Computer Repair Centre\Wallpapers\wallpaper4.jpg"
+$wallpaper5URL = "https://raw.githubusercontent.com/charliehoward/CRC-Installer-PS/master/assets/wallpapers/wallpaper5.jpg"
+$wallpaper5Path = "C:\Computer Repair Centre\Wallpapers\wallpaper5.jpg"
+$wallpaper6URL = "https://raw.githubusercontent.com/charliehoward/CRC-Installer-PS/master/assets/wallpapers/wallpaper6.jpg"
+$wallpaper6Path = "C:\Computer Repair Centre\Wallpapers\wallpaper6.jpg"
+$wallpaper7URL = "https://raw.githubusercontent.com/charliehoward/CRC-Installer-PS/master/assets/wallpapers/wallpaper7.jpg"
+$wallpaper7Path = "C:\Computer Repair Centre\Wallpapers\wallpaper7.jpg"
+$wallpaper8URL = "https://raw.githubusercontent.com/charliehoward/CRC-Installer-PS/master/assets/wallpapers/wallpaper8.jpg"
+$wallpaper8Path = "C:\Computer Repair Centre\Wallpapers\wallpaper8.jpg"
+$wallpaper9URL = "https://raw.githubusercontent.com/charliehoward/CRC-Installer-PS/master/assets/wallpapers/wallpaper9.jpg"
+$wallpaper9Path = "C:\Computer Repair Centre\Wallpapers\wallpaper9.jpg"
+$wallpaper10URL = "https://raw.githubusercontent.com/charliehoward/CRC-Installer-PS/master/assets/wallpapers/wallpaper10.jpg"
+$wallpaper10Path = "C:\Computer Repair Centre\Wallpapers\wallpaper10.jpg"
+$wallpaper11URL = "https://raw.githubusercontent.com/charliehoward/CRC-Installer-PS/master/assets/wallpapers/wallpaper11.jpg"
+$wallpaper11Path = "C:\Computer Repair Centre\Wallpapers\wallpaper11.jpg"
+New-Item -ItemType directory -Path "C:\Computer Repair Centre\Wallpapers" | Out-Null
 Invoke-RestMethod -Uri $sysPinURL -OutFile $sysPinPath
 Invoke-RestMethod -Uri $crcURL -OutFile $crcPath
 Invoke-RestMethod -Uri $7zipURL -OutFile $7zipPath
@@ -32,6 +55,17 @@ Invoke-RestMethod -Uri $mozillaFirefoxURL -OutFile $mozillaFirefoxPath
 Invoke-RestMethod -Uri $teamViewerURL -OutFile $teamViewerPath
 Invoke-RestMethod -Uri $vlcMediaPlayerURL -OutFile $vlcMediaPlayerPath
 Invoke-RestMethod -Uri $birthdayURL -OutFile $birthdayPath
+Invoke-RestMethod -Uri $wallpaper1URL -OutFile $wallpaper1Path
+Invoke-RestMethod -Uri $wallpaper2URL -OutFile $wallpaper2Path
+Invoke-RestMethod -Uri $wallpaper3URL -OutFile $wallpaper3Path
+Invoke-RestMethod -Uri $wallpaper4URL -OutFile $wallpaper4Path
+Invoke-RestMethod -Uri $wallpaper5URL -OutFile $wallpaper5Path
+Invoke-RestMethod -Uri $wallpaper6URL -OutFile $wallpaper6Path
+Invoke-RestMethod -Uri $wallpaper7URL -OutFile $wallpaper7Path
+Invoke-RestMethod -Uri $wallpaper8URL -OutFile $wallpaper8Path
+Invoke-RestMethod -Uri $wallpaper9URL -OutFile $wallpaper9Path
+Invoke-RestMethod -Uri $wallpaper10URL -OutFile $wallpaper10Path
+Invoke-RestMethod -Uri $wallpaper11URL -OutFile $wallpaper11Path
 
 #Get OS version
 $os = (Get-WmiObject -Class Win32_OperatingSystem).version
@@ -44,6 +78,10 @@ $ip = Invoke-RestMethod http://ipinfo.io/json | Select -exp ip
 
 #Get current username
 $user = $env:UserName
+
+#Wallpapers
+$wallpaperFolder = 'C:\Computer Repair Centre\Wallpapers'
+$randomWallpaper = Get-ChildItem -Recurse $wallpaperFolder |where {$_.Extension -eq ".jpg"}  | Get-Random -Count 1
 
 #Generate form
 	function GenerateForm {
@@ -549,7 +587,17 @@ $user = $env:UserName
 			& "C:\Computer Repair Centre\sysPin.exe" "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" c:5386
 			& "C:\Computer Repair Centre\sysPin.exe" "C:\Program Files\Mozilla Firefox\firefox.exe" c:5386
 			& "C:\Computer Repair Centre\sysPin.exe" "C:\Windows\explorer.exe" c:5386
-			$progress.Items.Add("The install has finished!")
+			$progress.Items.Add("Auto-arranging Desktop icons.")
+			$progress.SelectedIndex = $progress.Items.Count - 1;
+			$progress.SelectedIndex = -1;
+			Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\Shell\Bags\1\Desktop" -Name "FFlags" -Type DWord -Value 00000221
+			$progress.Items.Add("Setting random wallpaper.")
+			$progress.SelectedIndex = $progress.Items.Count - 1;
+			$progress.SelectedIndex = -1;
+			Set-ItemProperty -path 'HKCU:\Control Panel\Desktop\' -name Wallpaper -value $randomWallpaper.FullName
+			Start-Sleep -s 5
+			rundll32.exe user32.dll, UpdatePerUserSystemParameters
+			$progress.Items.Add("The installer has finished! The installer will close in 30 seconds.")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
 			}
@@ -564,7 +612,17 @@ $user = $env:UserName
 			& "C:\Computer Repair Centre\sysPin.exe" "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" c:5386
 			& "C:\Computer Repair Centre\sysPin.exe" "C:\Program Files\Mozilla Firefox\firefox.exe" c:5386
 			& "C:\Computer Repair Centre\sysPin.exe" "C:\Windows\explorer.exe" c:5386
-			$progress.Items.Add("The install has finished!")
+			$progress.Items.Add("Auto-arranging Desktop icons.")
+			$progress.SelectedIndex = $progress.Items.Count - 1;
+			$progress.SelectedIndex = -1;
+			Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\Shell\Bags\1\Desktop" -Name "FFlags" -Type DWord -Value 00000221
+			$progress.Items.Add("Setting random wallpaper.")
+			$progress.SelectedIndex = $progress.Items.Count - 1;
+			$progress.SelectedIndex = -1;
+			Set-ItemProperty -path 'HKCU:\Control Panel\Desktop\' -name Wallpaper -value $randomWallpaper.FullName
+			Start-Sleep -s 5
+			rundll32.exe user32.dll, UpdatePerUserSystemParameters
+			$progress.Items.Add("The installer has finished! The installer will close in 30 seconds.")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
 			}
@@ -579,7 +637,17 @@ $user = $env:UserName
 			& "C:\Computer Repair Centre\sysPin.exe" "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" c:5386
 			& "C:\Computer Repair Centre\sysPin.exe" "C:\Program Files\Mozilla Firefox\firefox.exe" c:5386
 			& "C:\Computer Repair Centre\sysPin.exe" "C:\Windows\explorer.exe" c:5386
-			$progress.Items.Add("The install has finished!")
+			$progress.Items.Add("Auto-arranging Desktop icons.")
+			$progress.SelectedIndex = $progress.Items.Count - 1;
+			$progress.SelectedIndex = -1;
+			Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\Shell\Bags\1\Desktop" -Name "FFlags" -Type DWord -Value 00000221
+			$progress.Items.Add("Setting random wallpaper.")
+			$progress.SelectedIndex = $progress.Items.Count - 1;
+			$progress.SelectedIndex = -1;
+			Set-ItemProperty -path 'HKCU:\Control Panel\Desktop\' -name Wallpaper -value $randomWallpaper.FullName
+			Start-Sleep -s 5
+			rundll32.exe user32.dll, UpdatePerUserSystemParameters
+			$progress.Items.Add("The installer has finished! The installer will close in 30 seconds.")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
 			}
@@ -624,11 +692,21 @@ $user = $env:UserName
 			New-Item -Path "HKCU:\SOFTWARE\Policies\Microsoft\Windows\Explorer" | Out-Null
 			Set-ItemProperty -Path "HKCU:\SOFTWARE\Policies\Microsoft\Windows\Explorer" -Name "DisableNotificationCenter" -Type DWord -Value 1
 			Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\PushNotifications" -Name "ToastEnabled" -Type DWord -Value 0
-			$progress.Items.Add("The install has finished! The installer will close in 15 seconds.")
+			$progress.Items.Add("Auto-arranging Desktop icons.")
+			$progress.SelectedIndex = $progress.Items.Count - 1;
+			$progress.SelectedIndex = -1;
+			Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\Shell\Bags\1\Desktop" -Name "FFlags" -Type DWord -Value 00000221
+			$progress.Items.Add("Setting random wallpaper.")
+			$progress.SelectedIndex = $progress.Items.Count - 1;
+			$progress.SelectedIndex = -1;
+			Set-ItemProperty -path 'HKCU:\Control Panel\Desktop\' -name Wallpaper -value $randomWallpaper.FullName
+			Start-Sleep -s 5
+			rundll32.exe user32.dll, UpdatePerUserSystemParameters
+			$progress.Items.Add("The installer has finished! The installer will close in 30 seconds.")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
 			}
-		Start-Sleep -s 15
+		Start-Sleep -s 30
 		$installer.Close()
 	}
 	$OnLoadForm_StateCorrection=
@@ -637,7 +715,7 @@ $user = $env:UserName
 	}
 
 #Main form
-	$installer.Text = "CRC Installer v2.0.3"
+	$installer.Text = "CRC Installer v2.1.0"
 	$installer.Name = "form1"
 	$installer.DataBindings.DefaultDataSourceUpdateMode = 0
 	$System_Drawing_Size = New-Object System.Drawing.Size

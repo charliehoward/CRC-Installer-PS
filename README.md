@@ -1,4 +1,4 @@
-# CRC Installer PowerShell 2.0.3
+# CRC Installer PowerShell 2.1.0
 
 When run you will get a form that allows to select what programs you wish to install.
 
@@ -9,6 +9,12 @@ If run on Windows 8 and 8.1 it also changes the default Explorer page to "This P
 If run on Windows 10 it also disables Windows 10 hibernation mode, Wi-Fi sense, and changes the default Explorer page to "This PC".
 
 Will check for previous installation of Windows and then copy over the old Users folder to the Desktop.
+
+Sets a random wallpaper from selection and auto arranges desktop icons.
+
+# Update 2.1.0
+
+Added feature that sets random wallpaper per machine.
 
 # Update 2.0.3
 
