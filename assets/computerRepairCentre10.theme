@@ -3,7 +3,7 @@
 [Theme]
 ; Windows - IDS_THEME_DISPLAYNAME_AERO
 DisplayName=computerRepairCentre10
-ThemeId={4BBC8A01-133D-4332-9C01-9CF6BF5DE452}
+ThemeId={7E8EE954-6876-41B3-9058-213E90F44085}
 
 ; Computer - SHIDI_SERVER
 [CLSID\{20D04FE0-3AEA-1069-A2D8-08002B30309D}\DefaultIcon]
@@ -23,25 +23,25 @@ Full=%SystemRoot%\System32\imageres.dll,-54
 Empty=%SystemRoot%\System32\imageres.dll,-55
 
 [Control Panel\Cursors]
-AppStarting=%SystemRoot%\Cursors\El Capitan\Working.ani
-Arrow=%SystemRoot%\Cursors\El Capitan\Normal.cur
-Crosshair=%SystemRoot%\Cursors\El Capitan\Precision.cur
-Hand=%SystemRoot%\Cursors\El Capitan\Link.cur
-Help=%SystemRoot%\Cursors\El Capitan\Help.cur
-IBeam=%SystemRoot%\Cursors\El Capitan\Text.cur
-No=%SystemRoot%\Cursors\El Capitan\Unavailable.cur
-NWPen=%SystemRoot%\Cursors\El Capitan\Handwriting.cur
-SizeAll=%SystemRoot%\Cursors\El Capitan\Move.cur
-SizeNESW=%SystemRoot%\Cursors\El Capitan\Diagonal Resize 2.cur
-SizeNS=%SystemRoot%\Cursors\El Capitan\Vertical Resize.cur
-SizeNWSE=%SystemRoot%\Cursors\El Capitan\Diagonal Resize 1.cur
-SizeWE=%SystemRoot%\Cursors\El Capitan\Horizontal Resize.cur
-UpArrow=%SystemRoot%\Cursors\El Capitan\Alternate.cur
-Wait=%SystemRoot%\Cursors\El Capitan\Busy.ani
-DefaultValue=El Capitan
+AppStarting=%SystemRoot%\cursors\aero_working.ani
+Arrow=%SystemRoot%\cursors\aero_arrow.cur
+Crosshair=
+Hand=%SystemRoot%\cursors\aero_link.cur
+Help=%SystemRoot%\cursors\aero_helpsel.cur
+IBeam=
+No=%SystemRoot%\cursors\aero_unavail.cur
+NWPen=%SystemRoot%\cursors\aero_pen.cur
+SizeAll=%SystemRoot%\cursors\aero_move.cur
+SizeNESW=%SystemRoot%\cursors\aero_nesw.cur
+SizeNS=%SystemRoot%\cursors\aero_ns.cur
+SizeNWSE=%SystemRoot%\cursors\aero_nwse.cur
+SizeWE=%SystemRoot%\cursors\aero_ew.cur
+UpArrow=%SystemRoot%\cursors\aero_up.cur
+Wait=%SystemRoot%\cursors\aero_busy.ani
+DefaultValue=Windows Default
 
 [Control Panel\Desktop]
-Wallpaper=%SystemDrive%\Computer Repair Centre\Wallpapers\2cRQltQ.jpeg
+Wallpaper=%SystemDrive%\Computer Repair Centre\Wallpapers\O3abuTO.jpeg
 Pattern=
 MultimonBackgrounds=0
 PicturePosition=4
@@ -65,7 +65,7 @@ MTSM=RJSPBS
 SchemeName=@mmres.dll,-800
 
 [Slideshow]
-ImagesRootPIDL=WGAFA8BUg/E0gouOpBhoYjAArADMdmBAvMkOcBAAAAAAAAAAAAAAAAAAAAAAAAgdAEDAAAAAAwGTgGGEAM0TNBVVU5XMAAgXAkAAEAw7+OGT7CFbMBaYuAAAAcWvDAAAA8CAAAAAAAAAAAAAAAAAAAQnyzEADBwbA0GAwBQdAQHAlBgcAACASBQZAAHAhBQaAIHAgAwQAUGAuBAdAIHAlBAAAgBAxDQMAAAAAAAbMFaYQAwVBxETQFkfxAAAGBQCAQAAv7LbM1ZYsxUoh5CAAAwxTCAAAAgjAAAAAAAAAAAAAAAAAAAAP/l6AcFAhBAbAwGAwBQYAAHAlBgcAMHAAAAGAMJAAAwJA8uvFCAAAEzUQN1td66/Nyx/DFIjECkOjOXLpBAAAQGAAAAAfAAAAwCAAAwdAkGAuBAZA8GA3BwcA4CApBQbA0GAlBgcAMHApBgdAUGAjBwbA4GA0BgcA8GAsBAcAEGAuBQZAwGAfBwYAcHA1AgbAEDAoBgMAQHA4BQeAUGA3BQeAAAAAAAAAAAAAAAGAAAA
+ImagesRootPIDL=DEAFA8BUg/E0gouOpBhoYjAArADMdmBAvMkOcBAAAAAAAAAAAAAAAAAAAAAAAAgdAEDAAAAAAwGTgGGEAM0TNBVVU5XMAAgXAkAAEAw7+OGT7CFbMBaYuAAAAcWvDAAAA8CAAAAAAAAAAAAAAAAAAAQnyzEADBwbA0GAwBQdAQHAlBgcAACASBQZAAHAhBQaAIHAgAwQAUGAuBAdAIHAlBAAAgBAeBQMAAAAAAAbMFaYQAwVBxETQFkfxAAAGBQCAQAAv7LbM1ZYsxUoh5CAAAwxTCAAAAgjAAAAAAAAAAAAAAAAAAAAP/l6AcFAhBAbAwGAwBQYAAHAlBgcAMHAAAAGAAAA
 
 Interval=1800000
 Shuffle=1
