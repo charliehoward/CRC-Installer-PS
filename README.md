@@ -1,4 +1,4 @@
-# CRC Installer PowerShell 2.2.2
+# CRC Installer PowerShell 2.2.3
 
 When run you will get a form that allows to select what programs you wish to install.
 
@@ -11,6 +11,10 @@ If run on Windows 10 it also disables Windows 10 hibernation mode, Wi-Fi sense, 
 Will check for previous installation of Windows and then copy over the old Users folder to the Desktop.
 
 Sets a random wallpaper from selection and auto arranges desktop icons.
+
+# Update 2.2.3
+
+Cleaned up spacing in code.
 
 # Update 2.2.2
 

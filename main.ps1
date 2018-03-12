@@ -207,9 +207,6 @@ function GenerateForm {
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
 			}
-		$progress.Items.Add("7-zip is checked."  )
-		$progress.SelectedIndex = $progress.Items.Count - 1;
-		$progress.SelectedIndex = -1;
 		$progress.Items.Add("Starting installation of 7-zip ...")
 		$progress.SelectedIndex = $progress.Items.Count - 1;
 		$progress.SelectedIndex = -1;
@@ -508,7 +505,7 @@ function GenerateForm {
 	    $installer.WindowState = $InitialFormWindowState
 	}
 #Main form
-	$installer.Text = "CRC Installer v2.2.2"
+	$installer.Text = "CRC Installer v2.2.3"
 	$installer.Name = "form1"
 	$installer.DataBindings.DefaultDataSourceUpdateMode = 0
 	$System_Drawing_Size = New-Object System.Drawing.Size
