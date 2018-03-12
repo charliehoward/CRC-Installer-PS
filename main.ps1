@@ -31,6 +31,8 @@ $windows7ThemeURL = "https://raw.githubusercontent.com/charliehoward/CRC-Install
 $windows7ThemePath = "C:\Computer Repair Centre\computerRepairCentre7.theme"
 $windows10ThemeURL = "https://raw.githubusercontent.com/charliehoward/CRC-Installer-PS/master/assets/computerRepairCentre10.theme"
 $windows10ThemePath = "C:\Computer Repair Centre\computerRepairCentre10.theme"
+$closeURL = "https://raw.githubusercontent.com/charliehoward/CRC-Installer-PS/master/close.ps1"
+$closePath = "C:\Computer Repair Centre\close.ps1"
 Invoke-RestMethod -Uri $sysPinURL -OutFile $sysPinPath
 Invoke-RestMethod -Uri $crcURL -OutFile $crcPath
 Invoke-RestMethod -Uri $googleChromeURL -OutFile $googleChromePath
@@ -47,6 +49,7 @@ Invoke-RestMethod -Uri $themeSwitcher7URL -OutFile $themeSwitcher7Path
 Invoke-RestMethod -Uri $themeSwitcher10URL -OutFile $themeSwitcher10Path
 Invoke-RestMethod -Uri $windows7ThemeURL -OutFile $windows7ThemePath
 Invoke-RestMethod -Uri $windows10ThemeURL -OutFile $windows10ThemePath
+Invoke-RestMethod -Uri $closeURL -OutFile $closePath
 #Get information
 $os = (Get-WmiObject -Class Win32_OperatingSystem).version
 $ip = Invoke-RestMethod http://ipinfo.io/json | Select -exp ip
@@ -499,13 +502,14 @@ function GenerateForm {
 			}
 		Start-Sleep -s 20
 		$installer.Close()
+		& "C:\Computer Repair Centre\close.ps1"
 	}
 	$OnLoadForm_StateCorrection=
 	{
 	    $installer.WindowState = $InitialFormWindowState
 	}
 #Main form
-	$installer.Text = "CRC Installer v2.2.3"
+	$installer.Text = "CRC Installer v2.2.4"
 	$installer.Name = "form1"
 	$installer.DataBindings.DefaultDataSourceUpdateMode = 0
 	$System_Drawing_Size = New-Object System.Drawing.Size
