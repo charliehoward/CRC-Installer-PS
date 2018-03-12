@@ -1,5 +1,5 @@
 # CRC Installer PowerShell 2.2.5
-# © Charlie Howard 2016-2018
+###### © Charlie Howard 2016-2018
 
 When run you will get a form that allows to select what programs you wish to install.
 
