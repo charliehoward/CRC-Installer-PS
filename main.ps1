@@ -514,7 +514,6 @@ if (($date.Day -eq $charlie.Day) -and ($date.Month -eq $charlie.Month) -or ($dat
 	{
 	    $installer.WindowState = $InitialFormWindowState
 	}
-
 #Main form
 	$installer.Text = "CRC Installer v2.2.0"
 	$installer.Name = "form1"
@@ -524,7 +523,6 @@ if (($date.Day -eq $charlie.Day) -and ($date.Month -eq $charlie.Month) -or ($dat
 	$System_Drawing_Size.Height = 330
 	$installer.ClientSize = $System_Drawing_Size
 	$installer.Icon = "C:\Computer Repair Centre\crc.ico"
-
 #Install button
 	$install.TabIndex = 4
 	$install.Name = "install"
@@ -541,7 +539,6 @@ if (($date.Day -eq $charlie.Day) -and ($date.Month -eq $charlie.Month) -or ($dat
 	$install.DataBindings.DefaultDataSourceUpdateMode = 0
 	$install.add_Click($handler_install_Click)
 	$installer.Controls.Add($install)
-
 #Progress box
 	$progress.FormattingEnabled = $True
 	$System_Drawing_Size = New-Object System.Drawing.Size
@@ -556,7 +553,6 @@ if (($date.Day -eq $charlie.Day) -and ($date.Month -eq $charlie.Month) -or ($dat
 	$progress.Location = $System_Drawing_Point
 	$progress.TabIndex = 3
 	$installer.Controls.Add($progress)
-
 #CRC OEM
 	$crc.UseVisualStyleBackColor = $True
 	$System_Drawing_Size = New-Object System.Drawing.Size
@@ -573,7 +569,6 @@ if (($date.Day -eq $charlie.Day) -and ($date.Month -eq $charlie.Month) -or ($dat
 	$crc.Checked = 1
 	$crc.Image = [System.Drawing.Image]::FromFile("C:\Computer Repair Centre\crc.ico")
 	$installer.Controls.Add($crc)
-
 #Wallpaper
 	$wallpaper.UseVisualStyleBackColor = $True
 	$System_Drawing_Size = New-Object System.Drawing.Size
@@ -590,7 +585,6 @@ if (($date.Day -eq $charlie.Day) -and ($date.Month -eq $charlie.Month) -or ($dat
 	$wallpaper.Checked = 1
 	$wallpaper.Image = [System.Drawing.Image]::FromFile("C:\Computer Repair Centre\wallpaper.ico")
 	$installer.Controls.Add($wallpaper)
-
 #Google Chrome
 	$googleChrome.UseVisualStyleBackColor = $True
 	$System_Drawing_Size = New-Object System.Drawing.Size
@@ -607,7 +601,6 @@ if (($date.Day -eq $charlie.Day) -and ($date.Month -eq $charlie.Month) -or ($dat
 	$googleChrome.Checked = 1
 	$googleChrome.Image = [System.Drawing.Image]::FromFile("C:\Computer Repair Centre\googleChrome.ico")
 	$installer.Controls.Add($googleChrome)
-
 #Kaspersky Internet Security 2018
 	$kaspersky.UseVisualStyleBackColor = $True
 	$System_Drawing_Size = New-Object System.Drawing.Size
@@ -624,7 +617,6 @@ if (($date.Day -eq $charlie.Day) -and ($date.Month -eq $charlie.Month) -or ($dat
 	$kaspersky.Checked = 1
 	$kaspersky.Image = [System.Drawing.Image]::FromFile("C:\Computer Repair Centre\kasperskyInternetSecurity.ico")
 	$installer.Controls.Add($kaspersky)
-
 #LibreOffice
 	$libreOffice.UseVisualStyleBackColor = $True
 	$System_Drawing_Size = New-Object System.Drawing.Size
@@ -641,7 +633,6 @@ if (($date.Day -eq $charlie.Day) -and ($date.Month -eq $charlie.Month) -or ($dat
 	$libreOffice.Checked = 0
 	$libreOffice.Image = [System.Drawing.Image]::FromFile("C:\Computer Repair Centre\libreOffice.ico")
 	$installer.Controls.Add($libreOffice)
-
 #Mozilla Firefox
 	$mozillaFirefox.UseVisualStyleBackColor = $True
 	$System_Drawing_Size = New-Object System.Drawing.Size
@@ -658,7 +649,6 @@ if (($date.Day -eq $charlie.Day) -and ($date.Month -eq $charlie.Month) -or ($dat
 	$mozillaFirefox.Checked = 1
 	$mozillaFirefox.Image = [System.Drawing.Image]::FromFile("C:\Computer Repair Centre\mozillaFirefox.ico")
 	$installer.Controls.Add($mozillaFirefox)
-
 #TeamViewer
 	$teamViewer.UseVisualStyleBackColor = $True
 	$System_Drawing_Size = New-Object System.Drawing.Size
@@ -675,7 +665,6 @@ if (($date.Day -eq $charlie.Day) -and ($date.Month -eq $charlie.Month) -or ($dat
 	$teamViewer.Checked = 1
 	$teamViewer.Image = [System.Drawing.Image]::FromFile("C:\Computer Repair Centre\teamViewer.ico")
 	$installer.Controls.Add($teamViewer)
-
 #VLC Media Player
 	$vlc.UseVisualStyleBackColor = $True
 	$System_Drawing_Size = New-Object System.Drawing.Size
@@ -692,14 +681,9 @@ if (($date.Day -eq $charlie.Day) -and ($date.Month -eq $charlie.Month) -or ($dat
 	$vlc.Checked = 1
 	$vlc.Image = [System.Drawing.Image]::FromFile("C:\Computer Repair Centre\vlcMediaPlayer.ico")
 	$installer.Controls.Add($vlc)
-
-#Save the initial state of the form
+#Form
 	$InitialFormWindowState = $installer.WindowState
 	$installer.add_Load($OnLoadForm_StateCorrection)
-
-#Show the Form
 	$installer.ShowDialog() | Out-Null
 	}
-
-#Call the Function
 GenerateForm
