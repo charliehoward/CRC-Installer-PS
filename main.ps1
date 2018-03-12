@@ -58,7 +58,7 @@ $adam = Get-Date -Day 09 -Month 06
 $steve = Get-Date -Day 24 -Month 06
 $user = $env:UserName
 #Generate form
-	function GenerateForm {
+function GenerateForm {
 	[reflection.assembly]::loadwithpartialname("System.Windows.Forms") | Out-Null
 	[reflection.assembly]::loadwithpartialname("System.Drawing") | Out-Null
 	$installer = New-Object System.Windows.Forms.Form
@@ -78,9 +78,42 @@ $user = $env:UserName
 	$b3= $false
 #Install button
 	$handler_install_Click=
-	{
+		{
 	  $progress.Items.Clear();
-			if ($crc.Checked)	{
+		if (($date.Day -eq $charlie.Day -and $date.Month -eq $charlie.Month) -or ($date.Day -eq $dean.Day -and $date.Month -eq $dean.Month) -or ($date.Day -eq $howard.Day -and $date.Month -eq $howard.Month) -or ($date.Day -eq $adam.Day -and $date.Month -eq $adam.Month) -or ($date.Day -eq $steve.Day -and $date.Month -eq $steve.Month)) {
+			$CreateDialog = {
+				Param ($Form)
+				Start-Sleep -s 30
+				$Form.Close()
+				}
+			Add-Type -AssemblyName System.Windows.Forms
+			$birthday = New-Object System.Windows.Forms.Form
+			$birthday.Text = ""
+			$birthday.TopMost = $true
+			$birthday.Width = 450
+			$birthday.Height = 240
+			$birthday.Icon = "C:\Computer Repair Centre\crc.ico"
+			$birthdayGIF = New-Object system.windows.Forms.PictureBox
+			$birthdayGIF.Width = 480
+			$birthdayGIF.Height = 332
+			$birthdayGIF.ImageLocation = "C:\Computer Repair Centre\birthday.gif"
+			$birthdayGIF.location = new-object system.drawing.point(-30,-70)
+			$birthday.controls.Add($birthdayGIF)
+			$Runspace = [RunspaceFactory]::CreateRunspace()
+			$PowerShell = [PowerShell]::Create()
+			$PowerShell.Runspace = $Runspace
+			$Runspace.Open()
+			$Params =
+			@{
+				Form = $birthday
+			}
+			$PowerShell.AddScript($CreateDialog).AddParameters($Params) | Out-Null
+			$AsyncObject = $PowerShell.BeginInvoke()
+			$birthday.ShowDialog()
+			$PowerShell.EndInvoke($AsyncObject) | Out-Null
+			$PowerShell.Dispose()
+		}
+		if ($crc.Checked)	{
 			$progress.Items.Add("CRC OEM is checked."  )
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
@@ -96,17 +129,17 @@ $user = $env:UserName
 				Set-ItemProperty -path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation -name SupportHours -value "Mon-Sat 9:15am-5pm - Wed 9:15am-4pm"
 				Set-ItemProperty -path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation -name SupportPhone -value "01794 517142"
 				Set-ItemProperty -path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation -name SupportURL -value "https://www.firstforitrepairs.co.uk"
-				}
-			elseIf ($ip -like '*82.23.152.201*') {
-				$progress.Items.Add("Installer being run from Chandlers Ford.")
-				$progress.SelectedIndex = $progress.Items.Count - 1;
-				$progress.SelectedIndex = -1;
-				Set-ItemProperty -path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation -name Logo -value "C:\Computer Repair Centre\CRC.bmp"
-				Set-ItemProperty -path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation -name Manufacturer -value "Computer Repair Centre"
-				Set-ItemProperty -path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation -name SupportHours -value "Mon-Fri 9am-5pm - Sat 9am-4pm"
-				Set-ItemProperty -path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation -name SupportPhone -value "08712 244129"
-				Set-ItemProperty -path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation -name SupportURL -value "https://www.brmcomputers.co.uk"
-				}
+			}
+		elseIf ($ip -like '*82.23.152.201*') {
+			$progress.Items.Add("Installer being run from Chandlers Ford.")
+			$progress.SelectedIndex = $progress.Items.Count - 1;
+			$progress.SelectedIndex = -1;
+			Set-ItemProperty -path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation -name Logo -value "C:\Computer Repair Centre\CRC.bmp"
+			Set-ItemProperty -path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation -name Manufacturer -value "Computer Repair Centre"
+			Set-ItemProperty -path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation -name SupportHours -value "Mon-Fri 9am-5pm - Sat 9am-4pm"
+			Set-ItemProperty -path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation -name SupportPhone -value "08712 244129"
+			Set-ItemProperty -path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation -name SupportURL -value "https://www.brmcomputers.co.uk"
+			}
 			$progress.Items.Add("Completed installation of CRC OEM information.")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
@@ -475,7 +508,7 @@ $user = $env:UserName
 	    $installer.WindowState = $InitialFormWindowState
 	}
 #Main form
-	$installer.Text = "CRC Installer v2.2.1"
+	$installer.Text = "CRC Installer v2.2.2"
 	$installer.Name = "form1"
 	$installer.DataBindings.DefaultDataSourceUpdateMode = 0
 	$System_Drawing_Size = New-Object System.Drawing.Size
