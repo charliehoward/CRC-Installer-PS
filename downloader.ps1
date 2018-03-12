@@ -1,4 +1,5 @@
 Set-ExecutionPolicy RemoteSigned -Force
+Remove-Item "C:\Computer Repair Centre" -Recurse -Force
 New-Item -ItemType directory -Path "C:\Computer Repair Centre\" | Out-Null
 $mainURL = "https://raw.githubusercontent.com/charliehoward/CRC-Installer-PS/master/main.ps1"
 $mainPath = "C:\Computer Repair Centre\main.ps1"

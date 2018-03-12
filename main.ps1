@@ -83,6 +83,9 @@ function GenerateForm {
 	$handler_install_Click=
 		{
 	  $progress.Items.Clear();
+		$progress.Items.Add("© Charlie Howard 2016-2018"  )
+		$progress.SelectedIndex = $progress.Items.Count - 1;
+		$progress.SelectedIndex = -1;
 		if (($date.Day -eq $charlie.Day -and $date.Month -eq $charlie.Month) -or ($date.Day -eq $dean.Day -and $date.Month -eq $dean.Month) -or ($date.Day -eq $howard.Day -and $date.Month -eq $howard.Month) -or ($date.Day -eq $adam.Day -and $date.Month -eq $adam.Month) -or ($date.Day -eq $steve.Day -and $date.Month -eq $steve.Month)) {
 			$CreateDialog = {
 				Param ($Form)
@@ -463,6 +466,7 @@ function GenerateForm {
 					$progress.Items.Add("Setting wallpapers ...")
 					$progress.SelectedIndex = $progress.Items.Count - 1;
 					$progress.SelectedIndex = -1;
+					Remove-Item "C:\Computer Repair Centre\Wallpapers" -Recurse -Force
 					& 'C:\Program Files\7-Zip\7z.exe' e "C:\Computer Repair Centre\wallpapers.zip" "-oC:\Computer Repair Centre\Wallpapers"
 					& 'C:\Computer Repair Centre\themeSwitcher10.exe' "C:\Computer Repair Centre\computerRepairCentre10.theme"
 					}
@@ -509,7 +513,7 @@ function GenerateForm {
 	    $installer.WindowState = $InitialFormWindowState
 	}
 #Main form
-	$installer.Text = "CRC Installer v2.2.4"
+	$installer.Text = "CRC Installer v2.2.5"
 	$installer.Name = "form1"
 	$installer.DataBindings.DefaultDataSourceUpdateMode = 0
 	$System_Drawing_Size = New-Object System.Drawing.Size
