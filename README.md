@@ -13,11 +13,11 @@ Will check for previous installation of Windows and then copy over the old Users
 
 Sets a random wallpaper from selection and auto arranges desktop icons.
 
-# Update 2.2.5
+##### Update 2.2.5
 
 Added "close.ps1" to remove all unnecessary files after installation is complete.
 
-# Update 2.2.4
+##### Update 2.2.4
 
 Fixed issue with wallpapers hanging if folder already exists.
 
