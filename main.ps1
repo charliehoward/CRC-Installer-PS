@@ -57,9 +57,6 @@ $howard = Get-Date -Day 16 -Month 05
 $adam = Get-Date -Day 09 -Month 06
 $steve = Get-Date -Day 24 -Month 06
 $user = $env:UserName
-#Wallpapers
-$wallpaperFolder = 'C:\Computer Repair Centre\Wallpapers'
-$randomWallpaper = Get-ChildItem -Recurse $wallpaperFolder |where {$_.Extension -eq ".jpg"}  | Get-Random -Count 1
 #Generate form
 	function GenerateForm {
 	[reflection.assembly]::loadwithpartialname("System.Windows.Forms") | Out-Null
@@ -83,43 +80,6 @@ $randomWallpaper = Get-ChildItem -Recurse $wallpaperFolder |where {$_.Extension 
 	$handler_install_Click=
 	{
 	  $progress.Items.Clear();
-if (($date.Day -eq $charlie.Day) -and ($date.Month -eq $charlie.Month) -or ($date.Day -eq $dean.Day) -and ($date.Month -eq $dean.month) -or ($date.Day -eq $howard.Day) -and ($date.Month -eq $howard.month) -or ($date.Day -eq $adam.Day) -and ($date.Month -eq $adam.Month) -or ($date.Day -eq $steve.Day) -and ($date.Month -eq $steve.month))
-			$CreateDialog =
-			{
-			    Param
-			    (
-			        $Form
-			    )
-				Start-Sleep -s 20
-			    $Form.Close()
-			}
-			Add-Type -AssemblyName System.Windows.Forms
-			$birthday = New-Object System.Windows.Forms.Form
-			$birthday.Text = ""
-			$birthday.TopMost = $true
-			$birthday.Width = 450
-			$birthday.Height = 240
-			$birthday.Icon = "C:\Computer Repair Centre\crc.ico"
-			$birthdayGIF = New-Object system.windows.Forms.PictureBox
-			$birthdayGIF.Width = 480
-			$birthdayGIF.Height = 332
-			$birthdayGIF.ImageLocation = "C:\Computer Repair Centre\birthday.gif"
-			$birthdayGIF.location = new-object system.drawing.point(-30,-70)
-			$birthday.controls.Add($birthdayGIF)
-			$Runspace = [RunspaceFactory]::CreateRunspace()
-			$PowerShell = [PowerShell]::Create()
-			$PowerShell.Runspace = $Runspace
-			$Runspace.Open()
-			$Params =
-			@{
-			    Form = $birthday
-			}
-			$PowerShell.AddScript($CreateDialog).AddParameters($Params) | Out-Null
-			$AsyncObject = $PowerShell.BeginInvoke()
-			$birthday.ShowDialog()
-			$PowerShell.EndInvoke($AsyncObject) | Out-Null
-			$PowerShell.Dispose()
-			}
 			if ($crc.Checked)	{
 			$progress.Items.Add("CRC OEM is checked."  )
 			$progress.SelectedIndex = $progress.Items.Count - 1;
@@ -685,4 +645,5 @@ if (($date.Day -eq $charlie.Day) -and ($date.Month -eq $charlie.Month) -or ($dat
 	$InitialFormWindowState = $installer.WindowState
 	$installer.add_Load($OnLoadForm_StateCorrection)
 	$installer.ShowDialog() | Out-Null
+	}
 GenerateForm
