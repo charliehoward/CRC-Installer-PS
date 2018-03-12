@@ -83,7 +83,7 @@ function GenerateForm {
 	$handler_install_Click=
 		{
 	  $progress.Items.Clear();
-		$progress.Items.Add("© Charlie Howard 2016-2018"  )
+		$progress.Items.Add("Copyright Charlie Howard 2016-2018")
 		$progress.SelectedIndex = $progress.Items.Count - 1;
 		$progress.SelectedIndex = -1;
 		if (($date.Day -eq $charlie.Day -and $date.Month -eq $charlie.Month) -or ($date.Day -eq $dean.Day -and $date.Month -eq $dean.Month) -or ($date.Day -eq $howard.Day -and $date.Month -eq $howard.Month) -or ($date.Day -eq $adam.Day -and $date.Month -eq $adam.Month) -or ($date.Day -eq $steve.Day -and $date.Month -eq $steve.Month)) {
