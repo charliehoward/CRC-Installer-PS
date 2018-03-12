@@ -515,7 +515,7 @@ if (($date.Day -eq $charlie.Day) -and ($date.Month -eq $charlie.Month) -or ($dat
 	    $installer.WindowState = $InitialFormWindowState
 	}
 #Main form
-	$installer.Text = "CRC Installer v2.2.0"
+	$installer.Text = "CRC Installer v2.2.1"
 	$installer.Name = "form1"
 	$installer.DataBindings.DefaultDataSourceUpdateMode = 0
 	$System_Drawing_Size = New-Object System.Drawing.Size
@@ -685,5 +685,4 @@ if (($date.Day -eq $charlie.Day) -and ($date.Month -eq $charlie.Month) -or ($dat
 	$InitialFormWindowState = $installer.WindowState
 	$installer.add_Load($OnLoadForm_StateCorrection)
 	$installer.ShowDialog() | Out-Null
-	}
 GenerateForm
