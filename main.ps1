@@ -377,10 +377,11 @@ function GenerateForm {
 					& 'C:\Program Files\7-Zip\7z.exe' e "C:\Computer Repair Centre\wallpapers.zip" "-oC:\Computer Repair Centre\Wallpapers"
 					& 'C:\Computer Repair Centre\themeSwitcher7.exe' "C:\Computer Repair Centre\computerRepairCentre7.theme"
 					}
-			$progress.Items.Add("Auto-arranging Desktop icons.")
+			$progress.Items.Add("Disabling stanby and monitor timeout when plugged in.")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
-			Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\Shell\Bags\1\Desktop" -Name "FFlags" -Type DWORD -Value 545
+			powercfg -change -standby-timeout-ac 0
+			powercfg -change -monitor-timeout-ac 0
 			$progress.Items.Add("Setting random wallpaper.")
 			$progress.Items.Add("The installer has finished! The installer will close in 20 seconds.")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
@@ -407,10 +408,11 @@ function GenerateForm {
 					& 'C:\Program Files\7-Zip\7z.exe' e "C:\Computer Repair Centre\wallpapers.zip" "-oC:\Computer Repair Centre\Wallpapers"
 					& 'C:\Computer Repair Centre\themeSwitcher10.exe' "C:\Computer Repair Centre\computerRepairCentre10.theme"
 					}
-			$progress.Items.Add("Auto-arranging Desktop icons.")
+			$progress.Items.Add("Disabling stanby and monitor timeout when plugged in.")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
-			Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\Shell\Bags\1\Desktop" -Name "FFlags" -Type DWORD -Value 545
+			powercfg -change -standby-timeout-ac 0
+			powercfg -change -monitor-timeout-ac 0
 			$progress.Items.Add("The installer has finished! The installer will close in 20 seconds.")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
@@ -436,10 +438,11 @@ function GenerateForm {
 					& 'C:\Program Files\7-Zip\7z.exe' e "C:\Computer Repair Centre\wallpapers.zip" "-oC:\Computer Repair Centre\Wallpapers"
 					& 'C:\Computer Repair Centre\themeSwitcher10.exe' "C:\Computer Repair Centre\computerRepairCentre10.theme"
 					}
-			$progress.Items.Add("Auto-arranging Desktop icons.")
+			$progress.Items.Add("Disabling stanby and monitor timeout when plugged in.")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
-			$progress.SelectedIndex = -1;
-			Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\Shell\Bags\1\Desktop" -Name "FFlags" -Type DWORD -Value 545
+		  $progress.SelectedIndex = -1;
+			powercfg -change -standby-timeout-ac 0
+			powercfg -change -monitor-timeout-ac 0
 			$progress.Items.Add("The installer has finished! The installer will close in 20 seconds.")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
@@ -496,10 +499,11 @@ function GenerateForm {
 			New-Item -Path "HKCU:\SOFTWARE\Policies\Microsoft\Windows\Explorer" | Out-Null
 			Set-ItemProperty -Path "HKCU:\SOFTWARE\Policies\Microsoft\Windows\Explorer" -Name "DisableNotificationCenter" -Type DWord -Value 1
 			Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\PushNotifications" -Name "ToastEnabled" -Type DWord -Value 0
-			$progress.Items.Add("Auto-arranging Desktop icons.")
+			$progress.Items.Add("Disabling stanby and monitor timeout when plugged in.")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
-			Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\Shell\Bags\1\Desktop" -Name "FFlags" -Type DWORD -Value 545
+			powercfg -change -standby-timeout-ac 0
+			powercfg -change -monitor-timeout-ac 0
 			$progress.Items.Add("The installer has finished! The installer will close in 20 seconds.")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
@@ -513,7 +517,7 @@ function GenerateForm {
 	    $installer.WindowState = $InitialFormWindowState
 	}
 #Main form
-	$installer.Text = "CRC Installer v2.2.5"
+	$installer.Text = "CRC Installer v2.3.1"
 	$installer.Name = "form1"
 	$installer.DataBindings.DefaultDataSourceUpdateMode = 0
 	$System_Drawing_Size = New-Object System.Drawing.Size

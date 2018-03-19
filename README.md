@@ -1,13 +1,17 @@
-# CRC Installer PowerShell 2.2.5
-###### © Charlie Howard 2016-2018
+# CRC Installer PowerShell 2.3.1
+###### © 2018 Charlie Howard
 
 When run you will get a form that allows to select what programs you wish to install.
 Can install the CRC OEM information, 7-zip, Google Chrome, Kaspersky Internet Security 2018, LibreOffice, Microsoft .NET 4.5, Microsoft .NET 4.6.1, Mozilla Firefox, PowerShell 5, TeamViewer & VLC Media Player.
 If run on Windows 8 and 8.1 it also changes the default Explorer page to "This PC".
 If run on Windows 10 it also disables Windows 10 hibernation mode, Wi-Fi sense, and changes the default Explorer page to "This PC".
-Sets a random wallpaper from selection and auto arranges desktop icons.
+Sets a random wallpaper from selection.
 
-###### Update 2.2.5
+###### Update 2.3.1
+
+Now disables standby and monitor timeout when plugged in.
+
+###### Update 2.3.0
 
 Added "close.ps1" to remove all unnecessary files after installation is complete.
 
