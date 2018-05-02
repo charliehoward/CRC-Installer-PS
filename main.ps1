@@ -459,9 +459,10 @@ function GenerateForm {
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
 			Remove-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Taskband" -Name "Favorites"
-			& "C:\Computer Repair Centre\sysPin.exe" "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" c:5386
-			& "C:\Computer Repair Centre\sysPin.exe" "C:\Program Files\Mozilla Firefox\firefox.exe" c:5386
-			& "C:\Computer Repair Centre\sysPin.exe" "C:\Windows\explorer.exe" c:5386
+			$progress.Items.Add("Deleting Microsoft Edge from Desktop ...")
+			$progress.SelectedIndex = $progress.Items.Count - 1;
+			$progress.SelectedIndex = -1;
+			Remove-Item "$Home\Desktop\Microsoft Edge.lnk" -Force
 			if ($wallpaper.Checked)	{
 					$progress.Items.Add("Set wallpapers is checked."  )
 					$progress.SelectedIndex = $progress.Items.Count - 1;
@@ -517,7 +518,7 @@ function GenerateForm {
 	    $installer.WindowState = $InitialFormWindowState
 	}
 #Main form
-	$installer.Text = "CRC Installer v2.3.1"
+	$installer.Text = "CRC Installer v2.4.0"
 	$installer.Name = "form1"
 	$installer.DataBindings.DefaultDataSourceUpdateMode = 0
 	$System_Drawing_Size = New-Object System.Drawing.Size
