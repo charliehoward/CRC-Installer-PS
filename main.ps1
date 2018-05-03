@@ -123,7 +123,7 @@ function GenerateForm {
 			$progress.Items.Add("CRC OEM is checked."  )
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
-		    $progress.Items.Add("Starting installation of CRC OEM information ...")
+		    $progress.Items.Add("Starting installation of CRC OEM information...")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
 			if ($ip -like '*212.159.116.68*') {
@@ -150,10 +150,10 @@ function GenerateForm {
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
 			}
-		$progress.Items.Add("Starting installation of all requisites ...")
+		$progress.Items.Add("Starting installation of all requisites...")
 		$progress.SelectedIndex = $progress.Items.Count - 1;
 		$progress.SelectedIndex = -1;
-		$progress.Items.Add("Starting installation of Chocolately ...")
+		$progress.Items.Add("Starting installation of Chocolately...")
 		$progress.SelectedIndex = $progress.Items.Count - 1;
 		$progress.SelectedIndex = -1;
 		iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
@@ -168,7 +168,7 @@ function GenerateForm {
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
 			}
-		$progress.Items.Add("Starting installation of DotNet 4.5 ...")
+		$progress.Items.Add("Starting installation of DotNet 4.5...")
 		$progress.SelectedIndex = $progress.Items.Count - 1;
 		$progress.SelectedIndex = -1;
 		choco install dotnet4.5 -y
@@ -183,7 +183,7 @@ function GenerateForm {
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
 			}
-		$progress.Items.Add("Starting installation of DotNet 4.6.1 ...")
+		$progress.Items.Add("Starting installation of DotNet 4.6.1...")
 		$progress.SelectedIndex = $progress.Items.Count - 1;
 		$progress.SelectedIndex = -1;
 		choco install dotnet4.6.1 -y
@@ -198,7 +198,7 @@ function GenerateForm {
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
 			}
-		$progress.Items.Add("Starting installation of PowerShell 5 ...")
+		$progress.Items.Add("Starting installation of PowerShell 5...")
 		$progress.SelectedIndex = $progress.Items.Count - 1;
 		$progress.SelectedIndex = -1;
 		choco install powershell -y
@@ -213,7 +213,7 @@ function GenerateForm {
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
 			}
-		$progress.Items.Add("Starting installation of 7-zip ...")
+		$progress.Items.Add("Starting installation of 7-zip...")
 		$progress.SelectedIndex = $progress.Items.Count - 1;
 		$progress.SelectedIndex = -1;
 		choco install 7zip.install -y --ignore-checksum
@@ -228,14 +228,14 @@ function GenerateForm {
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
 			}
-		$progress.Items.Add("Completed installation of all requisites ...")
+		$progress.Items.Add("Completed installation of all requisites...")
 		$progress.SelectedIndex = $progress.Items.Count - 1;
 		$progress.SelectedIndex = -1;
 	  if ($googleChrome.Checked)	{
 			$progress.Items.Add("Google Chrome is checked."  )
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
-			$progress.Items.Add("Starting installation of Google Chrome ...")
+			$progress.Items.Add("Starting installation of Google Chrome...")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
 			choco install googlechrome -y --ignore-checksum
@@ -255,7 +255,7 @@ function GenerateForm {
 			$progress.Items.Add("Kaspersky Internet Security 2018 is checked."  )
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
-			$progress.Items.Add("Starting installation of Kaspersky Internet Security 2018 ...")
+			$progress.Items.Add("Starting installation of Kaspersky Internet Security 2018...")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
 			choco install kis -y --ignore-checksum
@@ -275,7 +275,7 @@ function GenerateForm {
 			$progress.Items.Add("LibreOffice is checked."  )
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
-			$progress.Items.Add("Starting installation of LibreOffice ...")
+			$progress.Items.Add("Starting installation of LibreOffice...")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
 			choco install libreoffice -y --ignore-checksum
@@ -295,7 +295,7 @@ function GenerateForm {
 			$progress.Items.Add("Mozilla Firefox Quantum is checked."  )
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
-			$progress.Items.Add("Starting installation of Mozilla Firefox Quantum ...")
+			$progress.Items.Add("Starting installation of Mozilla Firefox Quantum...")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
 			choco install firefox -y --ignore-checksum
@@ -315,7 +315,7 @@ function GenerateForm {
 			$progress.Items.Add("TeamViewer is checked."  )
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
-			$progress.Items.Add("Starting installation of TeamViewer ...")
+			$progress.Items.Add("Starting installation of TeamViewer...")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
 			choco install teamviewer -y --ignore-checksum
@@ -335,7 +335,7 @@ function GenerateForm {
 			$progress.Items.Add("VLC Media Player is checked."  )
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
-			$progress.Items.Add("Starting installation of VLC Media Player ...")
+			$progress.Items.Add("Starting installation of VLC Media Player...")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
 			choco install vlc -y --ignore-checksum
@@ -351,16 +351,11 @@ function GenerateForm {
 				$progress.SelectedIndex = -1;
 				}
 			}
-	    if (!$crc.Checked -and !$googleChrome.Checked -and !$kaspersky.Checked -and !$libreOffice.Checked -and !$mozillaFirefox.Checked -and !$teamViewer.Checked -and !$vlc.Checked){
-			$progress.Items.Add("No programs are selected, please select some programs to install.")
-			$progress.SelectedIndex = $progress.Items.Count - 1;
-			$progress.SelectedIndex = -1;
-			}
 		if ($os -like '*6.1*')	{
 			$progress.Items.Add("This computer is running Windows 7.")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
-			$progress.Items.Add("Setting taskbar icons ...")
+			$progress.Items.Add("Setting taskbar icons...")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
 			Remove-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Taskband" -Name "Favorites"
@@ -371,18 +366,22 @@ function GenerateForm {
 					$progress.Items.Add("Set wallpapers is checked."  )
 					$progress.SelectedIndex = $progress.Items.Count - 1;
 					$progress.SelectedIndex = -1;
-					$progress.Items.Add("Setting wallpapers ...")
+					$progress.Items.Add("Setting wallpapers...")
 					$progress.SelectedIndex = $progress.Items.Count - 1;
 					$progress.SelectedIndex = -1;
 					& 'C:\Program Files\7-Zip\7z.exe' e "C:\Computer Repair Centre\wallpapers.zip" "-oC:\Computer Repair Centre\Wallpapers"
 					& 'C:\Computer Repair Centre\themeSwitcher7.exe' "C:\Computer Repair Centre\computerRepairCentre7.theme"
 					}
-			$progress.Items.Add("Disabling stanby and monitor timeout when plugged in.")
+			$progress.Items.Add("Disabling stanby and monitor timeout when plugged in...")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
 			powercfg -change -standby-timeout-ac 0
 			powercfg -change -monitor-timeout-ac 0
 			$progress.Items.Add("Setting random wallpaper.")
+			$progress.Items.Add("Auto-arranging Desktop icons...")
+			$progress.SelectedIndex = $progress.Items.Count - 1;
+			$progress.SelectedIndex = -1;
+			Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\Shell\Bags\1\Desktop" -Name "FFlags" -Type DWord -Value 1075839525
 			$progress.Items.Add("The installer has finished! The installer will close in 20 seconds.")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
@@ -391,7 +390,7 @@ function GenerateForm {
 			$progress.Items.Add("This computer is running Windows 8.")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
-			$progress.Items.Add("Setting taskbar icons ...")
+			$progress.Items.Add("Setting taskbar icons...")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
 			Remove-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Taskband" -Name "Favorites"
@@ -402,17 +401,21 @@ function GenerateForm {
 					$progress.Items.Add("Set wallpapers is checked."  )
 					$progress.SelectedIndex = $progress.Items.Count - 1;
 					$progress.SelectedIndex = -1;
-					$progress.Items.Add("Setting wallpapers ...")
+					$progress.Items.Add("Setting wallpapers...")
 					$progress.SelectedIndex = $progress.Items.Count - 1;
 					$progress.SelectedIndex = -1;
 					& 'C:\Program Files\7-Zip\7z.exe' e "C:\Computer Repair Centre\wallpapers.zip" "-oC:\Computer Repair Centre\Wallpapers"
 					& 'C:\Computer Repair Centre\themeSwitcher10.exe' "C:\Computer Repair Centre\computerRepairCentre10.theme"
 					}
-			$progress.Items.Add("Disabling stanby and monitor timeout when plugged in.")
+			$progress.Items.Add("Disabling stanby and monitor timeout when plugged in...")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
 			powercfg -change -standby-timeout-ac 0
 			powercfg -change -monitor-timeout-ac 0
+			$progress.Items.Add("Auto-arranging Desktop icons...")
+			$progress.SelectedIndex = $progress.Items.Count - 1;
+			$progress.SelectedIndex = -1;
+			Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\Shell\Bags\1\Desktop" -Name "FFlags" -Type DWord -Value 1075839525
 			$progress.Items.Add("The installer has finished! The installer will close in 20 seconds.")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
@@ -421,7 +424,7 @@ function GenerateForm {
 			$progress.Items.Add("This computer is running Windows 8.1.")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
-			$progress.Items.Add("Setting taskbar icons ...")
+			$progress.Items.Add("Setting taskbar icons...")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
 			Remove-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Taskband" -Name "Favorites"
@@ -432,17 +435,21 @@ function GenerateForm {
 					$progress.Items.Add("Set wallpapers is checked."  )
 					$progress.SelectedIndex = $progress.Items.Count - 1;
 					$progress.SelectedIndex = -1;
-					$progress.Items.Add("Setting wallpapers ...")
+					$progress.Items.Add("Setting wallpapers...")
 					$progress.SelectedIndex = $progress.Items.Count - 1;
 					$progress.SelectedIndex = -1;
 					& 'C:\Program Files\7-Zip\7z.exe' e "C:\Computer Repair Centre\wallpapers.zip" "-oC:\Computer Repair Centre\Wallpapers"
 					& 'C:\Computer Repair Centre\themeSwitcher10.exe' "C:\Computer Repair Centre\computerRepairCentre10.theme"
 					}
-			$progress.Items.Add("Disabling stanby and monitor timeout when plugged in.")
+			$progress.Items.Add("Disabling stanby and monitor timeout when plugged in...")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 		  $progress.SelectedIndex = -1;
 			powercfg -change -standby-timeout-ac 0
 			powercfg -change -monitor-timeout-ac 0
+			$progress.Items.Add("Auto-arranging Desktop icons...")
+			$progress.SelectedIndex = $progress.Items.Count - 1;
+			$progress.SelectedIndex = -1;
+			Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\Shell\Bags\1\Desktop" -Name "FFlags" -Type DWord -Value 1075839525
 			$progress.Items.Add("The installer has finished! The installer will close in 20 seconds.")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
@@ -451,11 +458,11 @@ function GenerateForm {
 			$progress.Items.Add("This computer is running Windows 10.")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
-			$progress.Items.Add("Setting explorer to open to This PC ...")
+			$progress.Items.Add("Setting explorer to open to This PC...")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
 			Set-ItemProperty -path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced -name LaunchTo -value 1
-			$progress.Items.Add("Setting taskbar icons ...")
+			$progress.Items.Add("Setting taskbar icons...")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
 			Remove-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Taskband" -Name "Favorites"
@@ -467,44 +474,48 @@ function GenerateForm {
 					$progress.Items.Add("Set wallpapers is checked."  )
 					$progress.SelectedIndex = $progress.Items.Count - 1;
 					$progress.SelectedIndex = -1;
-					$progress.Items.Add("Setting wallpapers ...")
+					$progress.Items.Add("Setting wallpapers...")
 					$progress.SelectedIndex = $progress.Items.Count - 1;
 					$progress.SelectedIndex = -1;
 					Remove-Item "C:\Computer Repair Centre\Wallpapers" -Recurse -Force
 					& 'C:\Program Files\7-Zip\7z.exe' e "C:\Computer Repair Centre\wallpapers.zip" "-oC:\Computer Repair Centre\Wallpapers"
 					& 'C:\Computer Repair Centre\themeSwitcher10.exe' "C:\Computer Repair Centre\computerRepairCentre10.theme"
 					}
-			$progress.Items.Add("Disabling fastboot mode ...")
+			$progress.Items.Add("Disabling fastboot mode...")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
 			Set-ItemProperty -path "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Power" -name HiberbootEnabled -value 0
-			$progress.Items.Add("Disabling Wi-Fi Sense ...")
+			$progress.Items.Add("Disabling Wi-Fi Sense...")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
 			New-Item -Path HKLM:\Software\Microsoft\PolicyManager\default\WiFi\AllowWiFiHotSpotReporting -Force | Out-Null
 			Set-ItemProperty -Path "HKLM:\Software\Microsoft\PolicyManager\default\WiFi\AllowWiFiHotSpotReporting" -Name "Value" -Type DWord -Value 0
 			Set-ItemProperty -Path "HKLM:\Software\Microsoft\PolicyManager\default\WiFi\AllowAutoConnectToWiFiSenseHotspots" -Name "Value" -Type DWord -Value 0
-			$progress.Items.Add("Disabling People icon ...")
+			$progress.Items.Add("Disabling People icon...")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
 			New-Item -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People" | Out-Null
 			Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People" -Name "PeopleBand" -Type DWord -Value 0
-			$progress.Items.Add("Hiding recently used files and folders in Explorer ...")
+			$progress.Items.Add("Hiding recently used files and folders in Explorer...")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
 			Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" -Name "ShowRecent" -Type DWord -Value 0
 			Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" -Name "ShowFrequent" -Type DWord -Value 0
-			$progress.Items.Add("Disabling Action Center ...")
+			$progress.Items.Add("Disabling Action Center...")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
 			New-Item -Path "HKCU:\SOFTWARE\Policies\Microsoft\Windows\Explorer" | Out-Null
 			Set-ItemProperty -Path "HKCU:\SOFTWARE\Policies\Microsoft\Windows\Explorer" -Name "DisableNotificationCenter" -Type DWord -Value 1
 			Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\PushNotifications" -Name "ToastEnabled" -Type DWord -Value 0
-			$progress.Items.Add("Disabling stanby and monitor timeout when plugged in.")
+			$progress.Items.Add("Disabling stanby and monitor timeout when plugged in...")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
 			powercfg -change -standby-timeout-ac 0
 			powercfg -change -monitor-timeout-ac 0
+			$progress.Items.Add("Auto-arranging Desktop icons...")
+			$progress.SelectedIndex = $progress.Items.Count - 1;
+			$progress.SelectedIndex = -1;
+			Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\Shell\Bags\1\Desktop" -Name "FFlags" -Type DWord -Value 1075839525
 			$progress.Items.Add("The installer has finished! The installer will close in 20 seconds.")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
@@ -518,7 +529,7 @@ function GenerateForm {
 	    $installer.WindowState = $InitialFormWindowState
 	}
 #Main form
-	$installer.Text = "CRC Installer v2.4.0"
+	$installer.Text = "CRC Installer v2.4.1"
 	$installer.Name = "form1"
 	$installer.DataBindings.DefaultDataSourceUpdateMode = 0
 	$System_Drawing_Size = New-Object System.Drawing.Size
