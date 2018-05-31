@@ -9,7 +9,7 @@ Sets a random wallpaper from selection.
 
 ###### Update 2.4.2
 
-Fixed Windows Explorer crashing issue on Windows 10.
+Updated Kaspersky Internet Security to 2019.
 
 ###### Update 2.4.1
 

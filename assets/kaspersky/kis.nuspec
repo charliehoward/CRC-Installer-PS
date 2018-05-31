@@ -2,13 +2,13 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>kis</id>
-    <version>18.0.0.0</version>
+    <version>19.0.0.0</version>
     <title>Kaspersky Internet Security</title>
     <authors>Kaspersky Lab</authors>
     <owners>dtgm</owners>
     <licenseUrl>https://support.kaspersky.com/12138</licenseUrl>
     <projectUrl>https://usa.kaspersky.com/downloads/free-home-trials/internet-security</projectUrl>
-    <iconUrl>https://cdn.rawgit.com/dtgm/chocolatey-packages/dd7121af88611d4f92e29187d065ba9a0fcaedeb/icons/kis.png</iconUrl>
+    <iconUrl>https://raw.githubusercontent.com/charliehoward/CRC-Installer-PS/master/assets/kasperskyInternetSecurity.ico</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Kaspersky Internet Security combines antivirus protection with a personal firewall and an anti-spam filter. Also keeps your PC free from malicious code, adware, spyware, hacker attacks, dialers, spam and network fraud.
 

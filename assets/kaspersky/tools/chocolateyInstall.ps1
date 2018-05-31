@@ -1,7 +1,7 @@
 ﻿$packageName = 'kis'
 $installerType = 'exe'
 $silentArgs = "/s /noreboot"
-$url = 'https://products.s.kaspersky-labs.com/english/homeuser/kis2018/kis18.0.0.405en-il_full.exe'
+$url = 'https://products.s.kaspersky-labs.com/homeuser/kis2019/19.0.0.1088a/english-GB-0.1248.0/United%20Kingdom(en-GB)/kis19.0.0.1088aen_14170.exe'
 $checksum = '42279c2be68292c91c21de0610c244af'
 $checksumType = 'md5'
 $validExitCodes = @(0,3010)
