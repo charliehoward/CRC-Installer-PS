@@ -13,6 +13,8 @@ $libreOfficeURL = "https://raw.githubusercontent.com/charliehoward/CRC-Installer
 $libreOfficePath = "C:\Computer Repair Centre\libreOffice.ico"
 $mozillaFirefoxURL = "https://raw.githubusercontent.com/charliehoward/CRC-Installer-PS/master/assets/mozillaFirefox.ico"
 $mozillaFirefoxPath = "C:\Computer Repair Centre\mozillaFirefox.ico"
+$mozillaThunderbirdURL = "https://raw.githubusercontent.com/charliehoward/CRC-Installer-PS/master/assets/mozillaThunderbird.ico"
+$mozillaThunderbirdPath = "C:\Computer Repair Centre\mozillaThunderbird.ico"
 $teamViewerURL = "https://raw.githubusercontent.com/charliehoward/CRC-Installer-PS/master/assets/teamViewer.ico"
 $teamViewerPath = "C:\Computer Repair Centre\teamViewer.ico"
 $vlcMediaPlayerURL = "https://raw.githubusercontent.com/charliehoward/CRC-Installer-PS/master/assets/vlcMediaPlayer.ico"
@@ -33,6 +35,8 @@ $windows10ThemeURL = "https://raw.githubusercontent.com/charliehoward/CRC-Instal
 $windows10ThemePath = "C:\Computer Repair Centre\computerRepairCentre10.theme"
 $closeURL = "https://raw.githubusercontent.com/charliehoward/CRC-Installer-PS/master/close.ps1"
 $closePath = "C:\Computer Repair Centre\close.ps1"
+$iTunesURL = "https://raw.githubusercontent.com/charliehoward/CRC-Installer-PS/master/assets/iTunes.ico"
+$iTunesPath = "C:\Computer Repair Centre\iTunes.ico"
 Invoke-RestMethod -Uri $sysPinURL -OutFile $sysPinPath
 Invoke-RestMethod -Uri $crcURL -OutFile $crcPath
 Invoke-RestMethod -Uri $googleChromeURL -OutFile $googleChromePath
@@ -40,6 +44,7 @@ Invoke-RestMethod -Uri $kasperskyInternetSecurityURL -OutFile $kasperskyInternet
 Invoke-RestMethod -Uri $kasperskyInternetSecurityChocoURL -OutFile $kasperskyInternetSecurityChocoPath
 Invoke-RestMethod -Uri $libreOfficeURL -OutFile $libreOfficePath
 Invoke-RestMethod -Uri $mozillaFirefoxURL -OutFile $mozillaFirefoxPath
+Invoke-RestMethod -Uri $mozillaThunderbirdURL -OutFile $mozillaThunderbirdPath
 Invoke-RestMethod -Uri $teamViewerURL -OutFile $teamViewerPath
 Invoke-RestMethod -Uri $vlcMediaPlayerURL -OutFile $vlcMediaPlayerPath
 Invoke-RestMethod -Uri $birthdayURL -OutFile $birthdayPath
@@ -49,6 +54,7 @@ Invoke-RestMethod -Uri $themeSwitcher7URL -OutFile $themeSwitcher7Path
 Invoke-RestMethod -Uri $themeSwitcher10URL -OutFile $themeSwitcher10Path
 Invoke-RestMethod -Uri $windows7ThemeURL -OutFile $windows7ThemePath
 Invoke-RestMethod -Uri $windows10ThemeURL -OutFile $windows10ThemePath
+Invoke-RestMethod -Uri $iTunesURL -OutFile $iTunesPath
 Invoke-RestMethod -Uri $closeURL -OutFile $closePath
 #Get information
 $os = (Get-WmiObject -Class Win32_OperatingSystem).version
@@ -69,11 +75,13 @@ function GenerateForm {
 	$progress = New-Object System.Windows.Forms.ListBox
 	$crc = New-Object System.Windows.Forms.CheckBox
 	$mozillaFirefox = New-Object System.Windows.Forms.CheckBox
+	$mozillaThunderbird = New-Object System.Windows.Forms.CheckBox
 	$googleChrome = New-Object System.Windows.Forms.CheckBox
 	$kaspersky = New-Object System.Windows.Forms.CheckBox
 	$vlc = New-Object System.Windows.Forms.CheckBox
 	$libreOffice = New-Object System.Windows.Forms.CheckBox
 	$teamViewer = New-Object System.Windows.Forms.CheckBox
+	$iTunes = New-Object System.Windows.Forms.CheckBox
 	$wallpaper = New-Object System.Windows.Forms.CheckBox
 	$InitialFormWindowState = New-Object System.Windows.Forms.FormWindowState
 	$b1= $false
@@ -153,81 +161,11 @@ function GenerateForm {
 		$progress.Items.Add("Starting installation of all requisites...")
 		$progress.SelectedIndex = $progress.Items.Count - 1;
 		$progress.SelectedIndex = -1;
-		$progress.Items.Add("Starting installation of Chocolately...")
-		$progress.SelectedIndex = $progress.Items.Count - 1;
-		$progress.SelectedIndex = -1;
 		iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
-		$Programs = choco list --localonly
-		if ($Programs -like '*chocolatey*') {
-			$progress.Items.Add("Completed installation of Chocolatey.")
-			$progress.SelectedIndex = $progress.Items.Count - 1;
-			$progress.SelectedIndex = -1;
-			}
-		else {
-			$progress.Items.Add("The installation of Chocolatey has failed.")
-			$progress.SelectedIndex = $progress.Items.Count - 1;
-			$progress.SelectedIndex = -1;
-			}
-		$progress.Items.Add("Starting installation of DotNet 4.5...")
-		$progress.SelectedIndex = $progress.Items.Count - 1;
-		$progress.SelectedIndex = -1;
 		choco install dotnet4.5 -y
-		$Programs = choco list --localonly
-		if ($Programs -like '*DotNet4.5*') {
-			$progress.Items.Add("Completed installation of DotNet 4.5.")
-			$progress.SelectedIndex = $progress.Items.Count - 1;
-			$progress.SelectedIndex = -1;
-			}
-		else {
-			$progress.Items.Add("The installation of DotNet 4.5 has failed.")
-			$progress.SelectedIndex = $progress.Items.Count - 1;
-			$progress.SelectedIndex = -1;
-			}
-		$progress.Items.Add("Starting installation of DotNet 4.6.1...")
-		$progress.SelectedIndex = $progress.Items.Count - 1;
-		$progress.SelectedIndex = -1;
 		choco install dotnet4.6.1 -y
-		$Programs = choco list --localonly
-		if ($Programs -like '*DotNet4.6.1*') {
-			$progress.Items.Add("Completed installation of DotNet 4.6.1.")
-			$progress.SelectedIndex = $progress.Items.Count - 1;
-			$progress.SelectedIndex = -1;
-			}
-		else {
-			$progress.Items.Add("The installation of DotNet 4.6.1 has failed.")
-			$progress.SelectedIndex = $progress.Items.Count - 1;
-			$progress.SelectedIndex = -1;
-			}
-		$progress.Items.Add("Starting installation of PowerShell 5...")
-		$progress.SelectedIndex = $progress.Items.Count - 1;
-		$progress.SelectedIndex = -1;
 		choco install powershell -y
-		$Programs = choco list --localonly
-		if ($Programs -like '*PowerShell 5*') {
-			$progress.Items.Add("Completed installation of PowerShell 5.")
-			$progress.SelectedIndex = $progress.Items.Count - 1;
-			$progress.SelectedIndex = -1;
-			}
-		else {
-			$progress.Items.Add("The installation of PowerShell 5 has failed.")
-			$progress.SelectedIndex = $progress.Items.Count - 1;
-			$progress.SelectedIndex = -1;
-			}
-		$progress.Items.Add("Starting installation of 7-zip...")
-		$progress.SelectedIndex = $progress.Items.Count - 1;
-		$progress.SelectedIndex = -1;
 		choco install 7zip.install -y --ignore-checksum
-		$Programs = choco list --localonly
-		if ($Programs -like '*7zip*') {
-			$progress.Items.Add("Completed installation of 7-zip.")
-			$progress.SelectedIndex = $progress.Items.Count - 1;
-			$progress.SelectedIndex = -1;
-			}
-		else {
-			$progress.Items.Add("The installation of 7-zip has failed.")
-			$progress.SelectedIndex = $progress.Items.Count - 1;
-			$progress.SelectedIndex = -1;
-			}
 		$progress.Items.Add("Completed installation of all requisites...")
 		$progress.SelectedIndex = $progress.Items.Count - 1;
 		$progress.SelectedIndex = -1;
@@ -251,22 +189,42 @@ function GenerateForm {
 				$progress.SelectedIndex = -1;
 				}
 			}
-		if ($kaspersky.Checked)	{
-			$progress.Items.Add("Kaspersky Internet Security 2018 is checked."  )
+	  if ($iTunes.Checked)	{
+			$progress.Items.Add("iTunes is checked."  )
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
-			$progress.Items.Add("Starting installation of Kaspersky Internet Security 2018...")
+			$progress.Items.Add("Starting installation of iTunes...")
+			$progress.SelectedIndex = $progress.Items.Count - 1;
+			$progress.SelectedIndex = -1;
+			choco install itunes -y --ignore-checksum
+			$Programs = choco list --localonly
+			if ($Programs -like '*iTunes*') {
+				$progress.Items.Add("Completed installation of iTunes.")
+				$progress.SelectedIndex = $progress.Items.Count - 1;
+				$progress.SelectedIndex = -1;
+				}
+			else {
+				$progress.Items.Add("The installation of iTunes has failed.")
+				$progress.SelectedIndex = $progress.Items.Count - 1;
+				$progress.SelectedIndex = -1;
+				}
+			}
+		if ($kaspersky.Checked)	{
+			$progress.Items.Add("Kaspersky Internet Security 2019 is checked."  )
+			$progress.SelectedIndex = $progress.Items.Count - 1;
+			$progress.SelectedIndex = -1;
+			$progress.Items.Add("Starting installation of Kaspersky Internet Security 2019...")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
 			choco install kis -y --ignore-checksum
 			$Programs = choco list --localonly
 			if ($Programs -like '*kis*') {
-				$progress.Items.Add("Completed installation of Kaspersky Internet Security 2018.")
+				$progress.Items.Add("Completed installation of Kaspersky Internet Security 2019.")
 				$progress.SelectedIndex = $progress.Items.Count - 1;
 				$progress.SelectedIndex = -1;
 				}
 			else {
-				$progress.Items.Add("The installation of Kaspersky Internet Security 2018 has failed.")
+				$progress.Items.Add("The installation of Kaspersky Internet Security 2019 has failed.")
 				$progress.SelectedIndex = $progress.Items.Count - 1;
 				$progress.SelectedIndex = -1;
 				}
@@ -307,6 +265,26 @@ function GenerateForm {
 				}
 			else {
 				$progress.Items.Add("The installation of Mozilla Firefox Quantum has failed.")
+				$progress.SelectedIndex = $progress.Items.Count - 1;
+				$progress.SelectedIndex = -1;
+				}
+			}
+		if ($mozillaThunderbird.Checked)	{
+			$progress.Items.Add("Mozilla Thunderbird is checked."  )
+			$progress.SelectedIndex = $progress.Items.Count - 1;
+			$progress.SelectedIndex = -1;
+			$progress.Items.Add("Starting installation of Mozilla Thunderbird...")
+			$progress.SelectedIndex = $progress.Items.Count - 1;
+			$progress.SelectedIndex = -1;
+			choco install thunderbird -y --ignore-checksum
+			$Programs = choco list --localonly
+			if ($Programs -like '*thunderbird*') {
+				$progress.Items.Add("Completed installation of Mozilla Thunderbird.")
+				$progress.SelectedIndex = $progress.Items.Count - 1;
+				$progress.SelectedIndex = -1;
+				}
+			else {
+				$progress.Items.Add("The installation of Mozilla Thunderbird has failed.")
 				$progress.SelectedIndex = $progress.Items.Count - 1;
 				$progress.SelectedIndex = -1;
 				}
@@ -412,10 +390,6 @@ function GenerateForm {
 			$progress.SelectedIndex = -1;
 			powercfg -change -standby-timeout-ac 0
 			powercfg -change -monitor-timeout-ac 0
-			$progress.Items.Add("Auto-arranging Desktop icons...")
-			$progress.SelectedIndex = $progress.Items.Count - 1;
-			$progress.SelectedIndex = -1;
-			Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\Shell\Bags\1\Desktop" -Name "FFlags" -Type DWord -Value 1075839525
 			$progress.Items.Add("The installer has finished! The installer will close in 20 seconds.")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
@@ -446,10 +420,6 @@ function GenerateForm {
 		  $progress.SelectedIndex = -1;
 			powercfg -change -standby-timeout-ac 0
 			powercfg -change -monitor-timeout-ac 0
-			$progress.Items.Add("Auto-arranging Desktop icons...")
-			$progress.SelectedIndex = $progress.Items.Count - 1;
-			$progress.SelectedIndex = -1;
-			Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\Shell\Bags\1\Desktop" -Name "FFlags" -Type DWord -Value 1075839525
 			$progress.Items.Add("The installer has finished! The installer will close in 20 seconds.")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
@@ -466,7 +436,10 @@ function GenerateForm {
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
 			Remove-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Taskband" -Name "Favorites"
-			$progress.Items.Add("Deleting Microsoft Edge from Desktop ...")
+			& "C:\Computer Repair Centre\sysPin.exe" "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" c:5386
+			& "C:\Computer Repair Centre\sysPin.exe" "C:\Program Files\Mozilla Firefox\firefox.exe" c:5386
+			& "C:\Computer Repair Centre\sysPin.exe" "C:\Windows\explorer.exe" c:5386
+			$progress.Items.Add("Deleting Microsoft Edge from Desktop...")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
 			Remove-Item "$Home\Desktop\Microsoft Edge.lnk" -Force
@@ -529,7 +502,7 @@ function GenerateForm {
 	    $installer.WindowState = $InitialFormWindowState
 	}
 #Main form
-	$installer.Text = "CRC Installer v2.4.2"
+	$installer.Text = "CRC Installer v2.5.0"
 	$installer.Name = "form1"
 	$installer.DataBindings.DefaultDataSourceUpdateMode = 0
 	$System_Drawing_Size = New-Object System.Drawing.Size
@@ -615,7 +588,23 @@ function GenerateForm {
 	$googleChrome.Checked = 1
 	$googleChrome.Image = [System.Drawing.Image]::FromFile("C:\Computer Repair Centre\googleChrome.ico")
 	$installer.Controls.Add($googleChrome)
-#Kaspersky Internet Security 2018
+#iTunes
+	$iTunes.UseVisualStyleBackColor = $True
+	$System_Drawing_Size = New-Object System.Drawing.Size
+	$System_Drawing_Size.Width = 36
+	$System_Drawing_Size.Height = 24
+	$iTunes.Size = $System_Drawing_Size
+	$iTunes.TabIndex = 2
+	$System_Drawing_Point = New-Object System.Drawing.Point
+	$System_Drawing_Point.X = 27
+	$System_Drawing_Point.Y = 106
+	$iTunes.Location = $System_Drawing_Point
+	$iTunes.DataBindings.DefaultDataSourceUpdateMode = 0
+	$iTunes.Name = "iTunes"
+	$iTunes.Checked = 0
+	$iTunes.Image = [System.Drawing.Image]::FromFile("C:\Computer Repair Centre\iTunes.ico")
+	$installer.Controls.Add($iTunes)
+#Kaspersky Internet Security
 	$kaspersky.UseVisualStyleBackColor = $True
 	$System_Drawing_Size = New-Object System.Drawing.Size
 	$System_Drawing_Size.Width = 36
@@ -624,7 +613,7 @@ function GenerateForm {
 	$kaspersky.TabIndex = 3
 	$System_Drawing_Point = New-Object System.Drawing.Point
 	$System_Drawing_Point.X = 27
-	$System_Drawing_Point.Y = 106
+	$System_Drawing_Point.Y = 137
 	$kaspersky.Location = $System_Drawing_Point
 	$kaspersky.DataBindings.DefaultDataSourceUpdateMode = 0
 	$kaspersky.Name = "kaspersky"
@@ -640,11 +629,11 @@ function GenerateForm {
 	$libreOffice.TabIndex = 6
 	$System_Drawing_Point = New-Object System.Drawing.Point
 	$System_Drawing_Point.X = 27
-	$System_Drawing_Point.Y = 137
+	$System_Drawing_Point.Y = 168
 	$libreOffice.Location = $System_Drawing_Point
 	$libreOffice.DataBindings.DefaultDataSourceUpdateMode = 0
 	$libreOffice.Name = "libreOffice"
-	$libreOffice.Checked = 0
+	$libreOffice.Checked = 1
 	$libreOffice.Image = [System.Drawing.Image]::FromFile("C:\Computer Repair Centre\libreOffice.ico")
 	$installer.Controls.Add($libreOffice)
 #Mozilla Firefox
@@ -656,13 +645,29 @@ function GenerateForm {
 	$mozillaFirefox.TabIndex = 1
 	$System_Drawing_Point = New-Object System.Drawing.Point
 	$System_Drawing_Point.X = 27
-	$System_Drawing_Point.Y = 168
+	$System_Drawing_Point.Y = 199
 	$mozillaFirefox.Location = $System_Drawing_Point
 	$mozillaFirefox.DataBindings.DefaultDataSourceUpdateMode = 0
 	$mozillaFirefox.Name = "mozillaFirefox"
 	$mozillaFirefox.Checked = 1
 	$mozillaFirefox.Image = [System.Drawing.Image]::FromFile("C:\Computer Repair Centre\mozillaFirefox.ico")
 	$installer.Controls.Add($mozillaFirefox)
+#Mozilla Thunderbird
+	$mozillaThunderbird.UseVisualStyleBackColor = $True
+	$System_Drawing_Size = New-Object System.Drawing.Size
+	$System_Drawing_Size.Width = 36
+	$System_Drawing_Size.Height = 24
+	$mozillaThunderbird.Size = $System_Drawing_Size
+	$mozillaThunderbird.TabIndex = 1
+	$System_Drawing_Point = New-Object System.Drawing.Point
+	$System_Drawing_Point.X = 27
+	$System_Drawing_Point.Y = 230
+	$mozillaThunderbird.Location = $System_Drawing_Point
+	$mozillaThunderbird.DataBindings.DefaultDataSourceUpdateMode = 0
+	$mozillaThunderbird.Name = "mozillaThunderbird"
+	$mozillaThunderbird.Checked = 0
+	$mozillaThunderbird.Image = [System.Drawing.Image]::FromFile("C:\Computer Repair Centre\mozillaThunderbird.ico")
+	$installer.Controls.Add($mozillaThunderbird)
 #TeamViewer
 	$teamViewer.UseVisualStyleBackColor = $True
 	$System_Drawing_Size = New-Object System.Drawing.Size
@@ -672,7 +677,7 @@ function GenerateForm {
 	$teamViewer.TabIndex = 7
 	$System_Drawing_Point = New-Object System.Drawing.Point
 	$System_Drawing_Point.X = 27
-	$System_Drawing_Point.Y = 199
+	$System_Drawing_Point.Y = 261
 	$teamViewer.Location = $System_Drawing_Point
 	$teamViewer.DataBindings.DefaultDataSourceUpdateMode = 0
 	$teamViewer.Name = "teamViewer"
@@ -688,7 +693,7 @@ function GenerateForm {
 	$vlc.TabIndex = 4
 	$System_Drawing_Point = New-Object System.Drawing.Point
 	$System_Drawing_Point.X = 27
-	$System_Drawing_Point.Y = 230
+	$System_Drawing_Point.Y = 292
 	$vlc.Location = $System_Drawing_Point
 	$vlc.DataBindings.DefaultDataSourceUpdateMode = 0
 	$vlc.Name = "vlc"
