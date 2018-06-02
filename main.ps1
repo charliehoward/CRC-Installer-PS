@@ -135,6 +135,7 @@ function GenerateForm {
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
 			if ($ip -like '*212.159.116.68*') {
+				$libreOfficeLocation = 1
 				$progress.Items.Add("Installer being run from Romsey.")
 				$progress.SelectedIndex = $progress.Items.Count - 1;
 				$progress.SelectedIndex = -1;
@@ -145,6 +146,7 @@ function GenerateForm {
 				Set-ItemProperty -path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation -name SupportURL -value "https://www.firstforitrepairs.co.uk"
 			}
 		elseIf ($ip -like '*82.23.152.201*') {
+			$libreOfficeLocation = 0
 			$progress.Items.Add("Installer being run from Chandlers Ford.")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
@@ -502,7 +504,7 @@ function GenerateForm {
 	    $installer.WindowState = $InitialFormWindowState
 	}
 #Main form
-	$installer.Text = "CRC Installer v2.5.0"
+	$installer.Text = "CRC Installer v2.5.1"
 	$installer.Name = "form1"
 	$installer.DataBindings.DefaultDataSourceUpdateMode = 0
 	$System_Drawing_Size = New-Object System.Drawing.Size
@@ -633,7 +635,7 @@ function GenerateForm {
 	$libreOffice.Location = $System_Drawing_Point
 	$libreOffice.DataBindings.DefaultDataSourceUpdateMode = 0
 	$libreOffice.Name = "libreOffice"
-	$libreOffice.Checked = 1
+	$libreOffice.Checked = $libreOfficeLocation
 	$libreOffice.Image = [System.Drawing.Image]::FromFile("C:\Computer Repair Centre\libreOffice.ico")
 	$installer.Controls.Add($libreOffice)
 #Mozilla Firefox
