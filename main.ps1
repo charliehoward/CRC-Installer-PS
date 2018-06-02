@@ -66,6 +66,12 @@ $howard = Get-Date -Day 16 -Month 05
 $adam = Get-Date -Day 09 -Month 06
 $steve = Get-Date -Day 24 -Month 06
 $user = $env:UserName
+If ($ip -like '*82.23.152.201*') {
+	$libreOfficeLocation = 0
+	}
+else {
+	$libreOfficeLocation = 1
+	}
 #Generate form
 function GenerateForm {
 	[reflection.assembly]::loadwithpartialname("System.Windows.Forms") | Out-Null
@@ -135,7 +141,6 @@ function GenerateForm {
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
 			if ($ip -like '*212.159.116.68*') {
-				$libreOfficeLocation = 1
 				$progress.Items.Add("Installer being run from Romsey.")
 				$progress.SelectedIndex = $progress.Items.Count - 1;
 				$progress.SelectedIndex = -1;
@@ -146,7 +151,6 @@ function GenerateForm {
 				Set-ItemProperty -path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation -name SupportURL -value "https://www.firstforitrepairs.co.uk"
 			}
 		elseIf ($ip -like '*82.23.152.201*') {
-			$libreOfficeLocation = 0
 			$progress.Items.Add("Installer being run from Chandlers Ford.")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
