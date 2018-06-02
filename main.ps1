@@ -150,7 +150,7 @@ function GenerateForm {
 				Set-ItemProperty -path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation -name SupportPhone -value "01794 517142"
 				Set-ItemProperty -path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation -name SupportURL -value "https://www.firstforitrepairs.co.uk"
 			}
-		elseIf ($ip -like '*82.23.152.201*') {
+		elseIf ($ip -like '*82.0.43.224*') {
 			$progress.Items.Add("Installer being run from Chandlers Ford.")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
