@@ -66,7 +66,7 @@ $howard = Get-Date -Day 16 -Month 05
 $adam = Get-Date -Day 09 -Month 06
 $steve = Get-Date -Day 24 -Month 06
 $user = $env:UserName
-If ($ip -like '*82.23.152.201*') {
+If ($ip -like '*82.0.43.224*') {
 	$libreOfficeLocation = 0
 	}
 else {
@@ -508,7 +508,7 @@ function GenerateForm {
 	    $installer.WindowState = $InitialFormWindowState
 	}
 #Main form
-	$installer.Text = "CRC Installer v2.5.1"
+	$installer.Text = "CRC Installer v2.5.2"
 	$installer.Name = "form1"
 	$installer.DataBindings.DefaultDataSourceUpdateMode = 0
 	$System_Drawing_Size = New-Object System.Drawing.Size
