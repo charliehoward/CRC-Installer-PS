@@ -137,7 +137,7 @@ function GenerateForm {
 			$progress.Items.Add("CRC OEM is checked."  )
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
-		    $progress.Items.Add("Starting installation of CRC OEM information...")
+		    $progress.Items.Add("Installing CRC OEM information...")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
 			if ($ip -like '*212.159.116.68*') {
@@ -164,7 +164,7 @@ function GenerateForm {
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
 			}
-		$progress.Items.Add("Starting installation of all requisites...")
+		$progress.Items.Add("Installing all requisites...")
 		$progress.SelectedIndex = $progress.Items.Count - 1;
 		$progress.SelectedIndex = -1;
 		iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
@@ -179,7 +179,7 @@ function GenerateForm {
 			$progress.Items.Add("Google Chrome is checked."  )
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
-			$progress.Items.Add("Starting installation of Google Chrome...")
+			$progress.Items.Add("Installing Google Chrome...")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
 			choco install googlechrome -y --ignore-checksum
@@ -199,7 +199,7 @@ function GenerateForm {
 			$progress.Items.Add("iTunes is checked."  )
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
-			$progress.Items.Add("Starting installation of iTunes...")
+			$progress.Items.Add("Installing iTunes...")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
 			choco install itunes -y --ignore-checksum
@@ -219,13 +219,24 @@ function GenerateForm {
 			$progress.Items.Add("Kaspersky Internet Security 2019 is checked."  )
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
-			$progress.Items.Add("Starting installation of Kaspersky Internet Security 2019...")
+			$progress.Items.Add("Installing Kaspersky Internet Security 2019...")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
 			choco install kis -y --ignore-checksum
 			$Programs = choco list --localonly
 			if ($Programs -like '*kis*') {
 				$progress.Items.Add("Completed installation of Kaspersky Internet Security 2019.")
+				$progress.SelectedIndex = $progress.Items.Count - 1;
+				$progress.SelectedIndex = -1;
+				$progress.Items.Add("Uninstalling Kaspersky Secure Connection...")
+				$progress.SelectedIndex = $progress.Items.Count - 1;
+				$progress.SelectedIndex = -1;
+				$kasperskySecureConnection = gci "HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall" | ForEach { gp $_.PSPath } | ? { $_ -Match "Kaspersky Secure Connection" } | Select UninstallString
+				$kasperskySecureConnection = $kasperskySecureConnection.UninstallString -Replace "msiexec.exe","" -Replace "/I","" -Replace "/X",""
+				$kasperskySecureConnection = $kasperskySecureConnection.Trim()
+				$kasperskySecureConnection = $kasperskySecureConnection | Select -Skip 1
+				cmd /c "C:\Windows\SysWOW64\msiexec.exe /i$kasperskySecureConnection REMOVE=ALL /passive"
+				$progress.Items.Add("Completed uninstallation of Kaspersky Secure Connection.")
 				$progress.SelectedIndex = $progress.Items.Count - 1;
 				$progress.SelectedIndex = -1;
 				}
@@ -239,7 +250,7 @@ function GenerateForm {
 			$progress.Items.Add("LibreOffice is checked."  )
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
-			$progress.Items.Add("Starting installation of LibreOffice...")
+			$progress.Items.Add("Installing LibreOffice...")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
 			choco install libreoffice -y --ignore-checksum
@@ -259,7 +270,7 @@ function GenerateForm {
 			$progress.Items.Add("Mozilla Firefox Quantum is checked."  )
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
-			$progress.Items.Add("Starting installation of Mozilla Firefox Quantum...")
+			$progress.Items.Add("Installing Mozilla Firefox Quantum...")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
 			choco install firefox -y --ignore-checksum
@@ -279,7 +290,7 @@ function GenerateForm {
 			$progress.Items.Add("Mozilla Thunderbird is checked."  )
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
-			$progress.Items.Add("Starting installation of Mozilla Thunderbird...")
+			$progress.Items.Add("Installing Mozilla Thunderbird...")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
 			choco install thunderbird -y --ignore-checksum
@@ -299,7 +310,7 @@ function GenerateForm {
 			$progress.Items.Add("TeamViewer is checked."  )
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
-			$progress.Items.Add("Starting installation of TeamViewer...")
+			$progress.Items.Add("Installing TeamViewer...")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
 			choco install teamviewer -y --ignore-checksum
@@ -319,7 +330,7 @@ function GenerateForm {
 			$progress.Items.Add("VLC Media Player is checked."  )
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
-			$progress.Items.Add("Starting installation of VLC Media Player...")
+			$progress.Items.Add("Installing VLC Media Player...")
 			$progress.SelectedIndex = $progress.Items.Count - 1;
 			$progress.SelectedIndex = -1;
 			choco install vlc -y --ignore-checksum
@@ -508,7 +519,7 @@ function GenerateForm {
 	    $installer.WindowState = $InitialFormWindowState
 	}
 #Main form
-	$installer.Text = "CRC Installer v2.5.2"
+	$installer.Text = "CRC Installer v2.6.0"
 	$installer.Name = "form1"
 	$installer.DataBindings.DefaultDataSourceUpdateMode = 0
 	$System_Drawing_Size = New-Object System.Drawing.Size
