@@ -1,14 +1,10 @@
 #Download all assets
-$sysPinURL = "https://raw.githubusercontent.com/charliehoward/CRC-Installer-PS/master/assets/sysPin.exe"
-$sysPinPath = "C:\Computer Repair Centre\sysPin.exe"
 $crcURL = "https://raw.githubusercontent.com/charliehoward/CRC-Installer-PS/master/assets/crc.bmp"
 $crcPath = "C:\Computer Repair Centre\crc.bmp"
 $googleChromeURL = "https://raw.githubusercontent.com/charliehoward/CRC-Installer-PS/master/assets/googleChrome.ico"
 $googleChromePath = "C:\Computer Repair Centre\googleChrome.ico"
 $kasperskyInternetSecurityURL = "https://raw.githubusercontent.com/charliehoward/CRC-Installer-PS/master/assets/kasperskyInternetSecurity.ico"
 $kasperskyInternetSecurityPath = "C:\Computer Repair Centre\kasperskyInternetSecurity.ico"
-$kasperskyInternetSecurityChocoURL = "https://raw.githubusercontent.com/charliehoward/CRC-Installer-PS/master/assets/kis.nupkg"
-$kasperskyInternetSecurityChocoPath = "C:\Computer Repair Centre\kis.nupkg"
 $libreOfficeURL = "https://raw.githubusercontent.com/charliehoward/CRC-Installer-PS/master/assets/libreOffice.ico"
 $libreOfficePath = "C:\Computer Repair Centre\libreOffice.ico"
 $mozillaFirefoxURL = "https://raw.githubusercontent.com/charliehoward/CRC-Installer-PS/master/assets/mozillaFirefox.ico"
@@ -23,25 +19,13 @@ $birthdayURL = "https://raw.githubusercontent.com/charliehoward/CRC-Installer-PS
 $birthdayPath = "C:\Computer Repair Centre\birthday.gif"
 $wallpaperURL = "https://raw.githubusercontent.com/charliehoward/CRC-Installer-PS/master/assets/wallpaper.ico"
 $wallpaperPath = "C:\Computer Repair Centre\wallpaper.ico"
-$wallpapersURL = "https://raw.githubusercontent.com/charliehoward/CRC-Installer-PS/master/assets/wallpapers.zip"
-$wallpapersPath = "C:\Computer Repair Centre\wallpapers.zip"
-$themeSwitcher7URL = "https://raw.githubusercontent.com/charliehoward/CRC-Installer-PS/master/assets/themeSwitcher7.exe"
-$themeSwitcher7Path = "C:\Computer Repair Centre\themeSwitcher7.exe"
-$themeSwitcher10URL = "https://raw.githubusercontent.com/charliehoward/CRC-Installer-PS/master/assets/themeSwitcher10.exe"
-$themeSwitcher10Path = "C:\Computer Repair Centre\themeSwitcher10.exe"
-$windows7ThemeURL = "https://raw.githubusercontent.com/charliehoward/CRC-Installer-PS/master/assets/computerRepairCentre7.theme"
-$windows7ThemePath = "C:\Computer Repair Centre\computerRepairCentre7.theme"
-$windows10ThemeURL = "https://raw.githubusercontent.com/charliehoward/CRC-Installer-PS/master/assets/computerRepairCentre10.theme"
-$windows10ThemePath = "C:\Computer Repair Centre\computerRepairCentre10.theme"
-$closeURL = "https://raw.githubusercontent.com/charliehoward/CRC-Installer-PS/master/close.ps1"
-$closePath = "C:\Computer Repair Centre\close.ps1"
 $iTunesURL = "https://raw.githubusercontent.com/charliehoward/CRC-Installer-PS/master/assets/iTunes.ico"
 $iTunesPath = "C:\Computer Repair Centre\iTunes.ico"
-Invoke-RestMethod -Uri $sysPinURL -OutFile $sysPinPath
+$northPointURL = "https://gitlab.com/charliehoward/NorthPointInstaller/raw/master/NorthPoint%20Installer%20x64.exe"
+$northPointPath = "$Home\Desktop\CRC Installer x64.exe"
 Invoke-RestMethod -Uri $crcURL -OutFile $crcPath
 Invoke-RestMethod -Uri $googleChromeURL -OutFile $googleChromePath
 Invoke-RestMethod -Uri $kasperskyInternetSecurityURL -OutFile $kasperskyInternetSecurityPath
-Invoke-RestMethod -Uri $kasperskyInternetSecurityChocoURL -OutFile $kasperskyInternetSecurityChocoPath
 Invoke-RestMethod -Uri $libreOfficeURL -OutFile $libreOfficePath
 Invoke-RestMethod -Uri $mozillaFirefoxURL -OutFile $mozillaFirefoxPath
 Invoke-RestMethod -Uri $mozillaThunderbirdURL -OutFile $mozillaThunderbirdPath
@@ -49,13 +33,7 @@ Invoke-RestMethod -Uri $teamViewerURL -OutFile $teamViewerPath
 Invoke-RestMethod -Uri $vlcMediaPlayerURL -OutFile $vlcMediaPlayerPath
 Invoke-RestMethod -Uri $birthdayURL -OutFile $birthdayPath
 Invoke-RestMethod -Uri $wallpaperURL -OutFile $wallpaperPath
-Invoke-RestMethod -Uri $wallpapersURL -OutFile $wallpapersPath
-Invoke-RestMethod -Uri $themeSwitcher7URL -OutFile $themeSwitcher7Path
-Invoke-RestMethod -Uri $themeSwitcher10URL -OutFile $themeSwitcher10Path
-Invoke-RestMethod -Uri $windows7ThemeURL -OutFile $windows7ThemePath
-Invoke-RestMethod -Uri $windows10ThemeURL -OutFile $windows10ThemePath
 Invoke-RestMethod -Uri $iTunesURL -OutFile $iTunesPath
-Invoke-RestMethod -Uri $closeURL -OutFile $closePath
 #Get information
 $os = (Get-WmiObject -Class Win32_OperatingSystem).version
 $ip = Invoke-RestMethod http://ipinfo.io/json | Select -exp ip
@@ -97,420 +75,14 @@ function GenerateForm {
 	$handler_install_Click=
 		{
 	  $progress.Items.Clear();
-		$progress.Items.Add("Copyright Charlie Howard 2016-2018")
+		$progress.Items.Add("Copyright (c) Charlie Howard 2016-2018 All rights reserved.")
 		$progress.SelectedIndex = $progress.Items.Count - 1;
 		$progress.SelectedIndex = -1;
-		if (($date.Day -eq $charlie.Day -and $date.Month -eq $charlie.Month) -or ($date.Day -eq $dean.Day -and $date.Month -eq $dean.Month) -or ($date.Day -eq $howard.Day -and $date.Month -eq $howard.Month) -or ($date.Day -eq $adam.Day -and $date.Month -eq $adam.Month) -or ($date.Day -eq $steve.Day -and $date.Month -eq $steve.Month)) {
-			$CreateDialog = {
-				Param ($Form)
-				Start-Sleep -s 30
-				$Form.Close()
-				}
-			Add-Type -AssemblyName System.Windows.Forms
-			$birthday = New-Object System.Windows.Forms.Form
-			$birthday.Text = ""
-			$birthday.TopMost = $true
-			$birthday.Width = 450
-			$birthday.Height = 240
-			$birthday.Icon = "C:\Computer Repair Centre\crc.ico"
-			$birthdayGIF = New-Object system.windows.Forms.PictureBox
-			$birthdayGIF.Width = 480
-			$birthdayGIF.Height = 332
-			$birthdayGIF.ImageLocation = "C:\Computer Repair Centre\birthday.gif"
-			$birthdayGIF.location = new-object system.drawing.point(-30,-70)
-			$birthday.controls.Add($birthdayGIF)
-			$Runspace = [RunspaceFactory]::CreateRunspace()
-			$PowerShell = [PowerShell]::Create()
-			$PowerShell.Runspace = $Runspace
-			$Runspace.Open()
-			$Params =
-			@{
-				Form = $birthday
-			}
-			$PowerShell.AddScript($CreateDialog).AddParameters($Params) | Out-Null
-			$AsyncObject = $PowerShell.BeginInvoke()
-			$birthday.ShowDialog()
-			$PowerShell.EndInvoke($AsyncObject) | Out-Null
-			$PowerShell.Dispose()
-		}
-		if ($crc.Checked)	{
-			$progress.Items.Add("CRC OEM is checked."  )
-			$progress.SelectedIndex = $progress.Items.Count - 1;
-			$progress.SelectedIndex = -1;
-		    $progress.Items.Add("Installing CRC OEM information...")
-			$progress.SelectedIndex = $progress.Items.Count - 1;
-			$progress.SelectedIndex = -1;
-			if ($ip -like '*212.159.116.68*') {
-				$progress.Items.Add("Installer being run from Romsey.")
-				$progress.SelectedIndex = $progress.Items.Count - 1;
-				$progress.SelectedIndex = -1;
-				Set-ItemProperty -path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation -name Logo -value "C:\Computer Repair Centre\crc.bmp"
-				Set-ItemProperty -path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation -name Manufacturer -value "Computer Repair Centre"
-				Set-ItemProperty -path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation -name SupportHours -value "Mon-Sat 9:15am-5pm - Wed 9:15am-4pm"
-				Set-ItemProperty -path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation -name SupportPhone -value "01794 517142"
-				Set-ItemProperty -path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation -name SupportURL -value "https://www.firstforitrepairs.co.uk"
-			}
-		elseIf ($ip -like '*82.0.43.224*') {
-			$progress.Items.Add("Installer being run from Chandlers Ford.")
-			$progress.SelectedIndex = $progress.Items.Count - 1;
-			$progress.SelectedIndex = -1;
-			Set-ItemProperty -path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation -name Logo -value "C:\Computer Repair Centre\CRC.bmp"
-			Set-ItemProperty -path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation -name Manufacturer -value "Computer Repair Centre"
-			Set-ItemProperty -path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation -name SupportHours -value "Mon-Fri 9am-5pm - Sat 9am-4pm"
-			Set-ItemProperty -path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation -name SupportPhone -value "08712 244129"
-			Set-ItemProperty -path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation -name SupportURL -value "https://www.brmcomputers.co.uk"
-			}
-			$progress.Items.Add("Completed installation of CRC OEM information.")
-			$progress.SelectedIndex = $progress.Items.Count - 1;
-			$progress.SelectedIndex = -1;
-			}
-		$progress.Items.Add("Installing all requisites...")
+		$progress.Items.Add("New version is available and has been downloaded onto the Desktop, please update all the USB keys.")
 		$progress.SelectedIndex = $progress.Items.Count - 1;
 		$progress.SelectedIndex = -1;
-		iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
-		choco install dotnet4.5 -y
-		choco install dotnet4.6.1 -y
-		choco install powershell -y
-		choco install 7zip.install -y --ignore-checksum
-		$progress.Items.Add("Completed installation of all requisites...")
-		$progress.SelectedIndex = $progress.Items.Count - 1;
-		$progress.SelectedIndex = -1;
-	  if ($googleChrome.Checked)	{
-			$progress.Items.Add("Google Chrome is checked."  )
-			$progress.SelectedIndex = $progress.Items.Count - 1;
-			$progress.SelectedIndex = -1;
-			$progress.Items.Add("Installing Google Chrome...")
-			$progress.SelectedIndex = $progress.Items.Count - 1;
-			$progress.SelectedIndex = -1;
-			choco install googlechrome -y --ignore-checksum
-			$Programs = choco list --localonly
-			if ($Programs -like '*GoogleChrome*') {
-				$progress.Items.Add("Completed installation of Google Chrome.")
-				$progress.SelectedIndex = $progress.Items.Count - 1;
-				$progress.SelectedIndex = -1;
-				}
-			else {
-				$progress.Items.Add("The installation of Google Chrome has failed.")
-				$progress.SelectedIndex = $progress.Items.Count - 1;
-				$progress.SelectedIndex = -1;
-				}
-			}
-	  if ($iTunes.Checked)	{
-			$progress.Items.Add("iTunes is checked."  )
-			$progress.SelectedIndex = $progress.Items.Count - 1;
-			$progress.SelectedIndex = -1;
-			$progress.Items.Add("Installing iTunes...")
-			$progress.SelectedIndex = $progress.Items.Count - 1;
-			$progress.SelectedIndex = -1;
-			choco install itunes -y --ignore-checksum
-			$Programs = choco list --localonly
-			if ($Programs -like '*iTunes*') {
-				$progress.Items.Add("Completed installation of iTunes.")
-				$progress.SelectedIndex = $progress.Items.Count - 1;
-				$progress.SelectedIndex = -1;
-				}
-			else {
-				$progress.Items.Add("The installation of iTunes has failed.")
-				$progress.SelectedIndex = $progress.Items.Count - 1;
-				$progress.SelectedIndex = -1;
-				}
-			}
-		if ($kaspersky.Checked)	{
-			$progress.Items.Add("Kaspersky Internet Security 2019 is checked."  )
-			$progress.SelectedIndex = $progress.Items.Count - 1;
-			$progress.SelectedIndex = -1;
-			$progress.Items.Add("Installing Kaspersky Internet Security 2019...")
-			$progress.SelectedIndex = $progress.Items.Count - 1;
-			$progress.SelectedIndex = -1;
-			choco install kis -y --ignore-checksum
-			$Programs = choco list --localonly
-			if ($Programs -like '*kis*') {
-				$progress.Items.Add("Completed installation of Kaspersky Internet Security 2019.")
-				$progress.SelectedIndex = $progress.Items.Count - 1;
-				$progress.SelectedIndex = -1;
-				$progress.Items.Add("Uninstalling Kaspersky Secure Connection...")
-				$progress.SelectedIndex = $progress.Items.Count - 1;
-				$progress.SelectedIndex = -1;
-				$kasperskySecureConnection = gci "HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall" | ForEach { gp $_.PSPath } | ? { $_ -Match "Kaspersky Secure Connection" } | Select UninstallString
-				$kasperskySecureConnection = $kasperskySecureConnection.UninstallString -Replace "msiexec.exe","" -Replace "/I","" -Replace "/X",""
-				$kasperskySecureConnection = $kasperskySecureConnection.Trim()
-				$kasperskySecureConnection = $kasperskySecureConnection | Select -Skip 1
-				cmd /c "C:\Windows\SysWOW64\msiexec.exe /i$kasperskySecureConnection REMOVE=ALL /passive"
-				$progress.Items.Add("Completed uninstallation of Kaspersky Secure Connection.")
-				$progress.SelectedIndex = $progress.Items.Count - 1;
-				$progress.SelectedIndex = -1;
-				}
-			else {
-				$progress.Items.Add("The installation of Kaspersky Internet Security 2019 has failed.")
-				$progress.SelectedIndex = $progress.Items.Count - 1;
-				$progress.SelectedIndex = -1;
-				}
-			}
-		if ($libreOffice.Checked)	{
-			$progress.Items.Add("LibreOffice is checked."  )
-			$progress.SelectedIndex = $progress.Items.Count - 1;
-			$progress.SelectedIndex = -1;
-			$progress.Items.Add("Installing LibreOffice...")
-			$progress.SelectedIndex = $progress.Items.Count - 1;
-			$progress.SelectedIndex = -1;
-			choco install libreoffice -y --ignore-checksum
-			$Programs = choco list --localonly
-			if ($Programs -like '*libreoffice*') {
-				$progress.Items.Add("Completed installation of LibreOffice.")
-				$progress.SelectedIndex = $progress.Items.Count - 1;
-				$progress.SelectedIndex = -1;
-				}
-			else {
-				$progress.Items.Add("The installation of LibreOffice has failed.")
-				$progress.SelectedIndex = $progress.Items.Count - 1;
-				$progress.SelectedIndex = -1;
-				}
-			}
-	    if ($mozillaFirefox.Checked)	{
-			$progress.Items.Add("Mozilla Firefox Quantum is checked."  )
-			$progress.SelectedIndex = $progress.Items.Count - 1;
-			$progress.SelectedIndex = -1;
-			$progress.Items.Add("Installing Mozilla Firefox Quantum...")
-			$progress.SelectedIndex = $progress.Items.Count - 1;
-			$progress.SelectedIndex = -1;
-			choco install firefox -y --ignore-checksum
-			$Programs = choco list --localonly
-			if ($Programs -like '*Firefox*') {
-				$progress.Items.Add("Completed installation of Mozilla Firefox Quantum.")
-				$progress.SelectedIndex = $progress.Items.Count - 1;
-				$progress.SelectedIndex = -1;
-				}
-			else {
-				$progress.Items.Add("The installation of Mozilla Firefox Quantum has failed.")
-				$progress.SelectedIndex = $progress.Items.Count - 1;
-				$progress.SelectedIndex = -1;
-				}
-			}
-		if ($mozillaThunderbird.Checked)	{
-			$progress.Items.Add("Mozilla Thunderbird is checked."  )
-			$progress.SelectedIndex = $progress.Items.Count - 1;
-			$progress.SelectedIndex = -1;
-			$progress.Items.Add("Installing Mozilla Thunderbird...")
-			$progress.SelectedIndex = $progress.Items.Count - 1;
-			$progress.SelectedIndex = -1;
-			choco install thunderbird -y --ignore-checksum
-			$Programs = choco list --localonly
-			if ($Programs -like '*thunderbird*') {
-				$progress.Items.Add("Completed installation of Mozilla Thunderbird.")
-				$progress.SelectedIndex = $progress.Items.Count - 1;
-				$progress.SelectedIndex = -1;
-				}
-			else {
-				$progress.Items.Add("The installation of Mozilla Thunderbird has failed.")
-				$progress.SelectedIndex = $progress.Items.Count - 1;
-				$progress.SelectedIndex = -1;
-				}
-			}
-		if ($teamViewer.Checked)	{
-			$progress.Items.Add("TeamViewer is checked."  )
-			$progress.SelectedIndex = $progress.Items.Count - 1;
-			$progress.SelectedIndex = -1;
-			$progress.Items.Add("Installing TeamViewer...")
-			$progress.SelectedIndex = $progress.Items.Count - 1;
-			$progress.SelectedIndex = -1;
-			choco install teamviewer -y --ignore-checksum
-			$Programs = choco list --localonly
-			if ($Programs -like '*teamviewer*') {
-				$progress.Items.Add("Completed installation of TeamViewer.")
-				$progress.SelectedIndex = $progress.Items.Count - 1;
-				$progress.SelectedIndex = -1;
-				}
-			else {
-				$progress.Items.Add("The installation of TeamViewer has failed.")
-				$progress.SelectedIndex = $progress.Items.Count - 1;
-				$progress.SelectedIndex = -1;
-				}
-			}
-		if ($vlc.Checked)	{
-			$progress.Items.Add("VLC Media Player is checked."  )
-			$progress.SelectedIndex = $progress.Items.Count - 1;
-			$progress.SelectedIndex = -1;
-			$progress.Items.Add("Installing VLC Media Player...")
-			$progress.SelectedIndex = $progress.Items.Count - 1;
-			$progress.SelectedIndex = -1;
-			choco install vlc -y --ignore-checksum
-			$Programs = choco list --localonly
-			if ($Programs -like '*vlc*') {
-				$progress.Items.Add("Completed installation of VLC Media Player.")
-				$progress.SelectedIndex = $progress.Items.Count - 1;
-				$progress.SelectedIndex = -1;
-				}
-			else {
-				$progress.Items.Add("The installation of VLC Media Player has failed.")
-				$progress.SelectedIndex = $progress.Items.Count - 1;
-				$progress.SelectedIndex = -1;
-				}
-			}
-		if ($os -like '*6.1*')	{
-			$progress.Items.Add("This computer is running Windows 7.")
-			$progress.SelectedIndex = $progress.Items.Count - 1;
-			$progress.SelectedIndex = -1;
-			$progress.Items.Add("Setting taskbar icons...")
-			$progress.SelectedIndex = $progress.Items.Count - 1;
-			$progress.SelectedIndex = -1;
-			Remove-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Taskband" -Name "Favorites"
-			& "C:\Computer Repair Centre\sysPin.exe" "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" c:5386
-			& "C:\Computer Repair Centre\sysPin.exe" "C:\Program Files\Mozilla Firefox\firefox.exe" c:5386
-			& "C:\Computer Repair Centre\sysPin.exe" "C:\Windows\explorer.exe" c:5386
-			if ($wallpaper.Checked)	{
-					$progress.Items.Add("Set wallpapers is checked."  )
-					$progress.SelectedIndex = $progress.Items.Count - 1;
-					$progress.SelectedIndex = -1;
-					$progress.Items.Add("Setting wallpapers...")
-					$progress.SelectedIndex = $progress.Items.Count - 1;
-					$progress.SelectedIndex = -1;
-					& 'C:\Program Files\7-Zip\7z.exe' e "C:\Computer Repair Centre\wallpapers.zip" "-oC:\Computer Repair Centre\Wallpapers"
-					& 'C:\Computer Repair Centre\themeSwitcher7.exe' "C:\Computer Repair Centre\computerRepairCentre7.theme"
-					}
-			$progress.Items.Add("Disabling stanby and monitor timeout when plugged in...")
-			$progress.SelectedIndex = $progress.Items.Count - 1;
-			$progress.SelectedIndex = -1;
-			powercfg -change -standby-timeout-ac 0
-			powercfg -change -monitor-timeout-ac 0
-			$progress.Items.Add("Setting random wallpaper.")
-			$progress.Items.Add("Auto-arranging Desktop icons...")
-			$progress.SelectedIndex = $progress.Items.Count - 1;
-			$progress.SelectedIndex = -1;
-			Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\Shell\Bags\1\Desktop" -Name "FFlags" -Type DWord -Value 1075839525
-			$progress.Items.Add("The installer has finished! The installer will close in 20 seconds.")
-			$progress.SelectedIndex = $progress.Items.Count - 1;
-			$progress.SelectedIndex = -1;
-			}
-		if ($os -like '*6.2*')	{
-			$progress.Items.Add("This computer is running Windows 8.")
-			$progress.SelectedIndex = $progress.Items.Count - 1;
-			$progress.SelectedIndex = -1;
-			$progress.Items.Add("Setting taskbar icons...")
-			$progress.SelectedIndex = $progress.Items.Count - 1;
-			$progress.SelectedIndex = -1;
-			Remove-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Taskband" -Name "Favorites"
-			& "C:\Computer Repair Centre\sysPin.exe" "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" c:5386
-			& "C:\Computer Repair Centre\sysPin.exe" "C:\Program Files\Mozilla Firefox\firefox.exe" c:5386
-			& "C:\Computer Repair Centre\sysPin.exe" "C:\Windows\explorer.exe" c:5386
-			if ($wallpaper.Checked)	{
-					$progress.Items.Add("Set wallpapers is checked."  )
-					$progress.SelectedIndex = $progress.Items.Count - 1;
-					$progress.SelectedIndex = -1;
-					$progress.Items.Add("Setting wallpapers...")
-					$progress.SelectedIndex = $progress.Items.Count - 1;
-					$progress.SelectedIndex = -1;
-					& 'C:\Program Files\7-Zip\7z.exe' e "C:\Computer Repair Centre\wallpapers.zip" "-oC:\Computer Repair Centre\Wallpapers"
-					& 'C:\Computer Repair Centre\themeSwitcher10.exe' "C:\Computer Repair Centre\computerRepairCentre10.theme"
-					}
-			$progress.Items.Add("Disabling stanby and monitor timeout when plugged in...")
-			$progress.SelectedIndex = $progress.Items.Count - 1;
-			$progress.SelectedIndex = -1;
-			powercfg -change -standby-timeout-ac 0
-			powercfg -change -monitor-timeout-ac 0
-			$progress.Items.Add("The installer has finished! The installer will close in 20 seconds.")
-			$progress.SelectedIndex = $progress.Items.Count - 1;
-			$progress.SelectedIndex = -1;
-			}
-		if ($os -like '*6.3*')	{
-			$progress.Items.Add("This computer is running Windows 8.1.")
-			$progress.SelectedIndex = $progress.Items.Count - 1;
-			$progress.SelectedIndex = -1;
-			$progress.Items.Add("Setting taskbar icons...")
-			$progress.SelectedIndex = $progress.Items.Count - 1;
-			$progress.SelectedIndex = -1;
-			Remove-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Taskband" -Name "Favorites"
-			& "C:\Computer Repair Centre\sysPin.exe" "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" c:5386
-			& "C:\Computer Repair Centre\sysPin.exe" "C:\Program Files\Mozilla Firefox\firefox.exe" c:5386
-			& "C:\Computer Repair Centre\sysPin.exe" "C:\Windows\explorer.exe" c:5386
-			if ($wallpaper.Checked)	{
-					$progress.Items.Add("Set wallpapers is checked."  )
-					$progress.SelectedIndex = $progress.Items.Count - 1;
-					$progress.SelectedIndex = -1;
-					$progress.Items.Add("Setting wallpapers...")
-					$progress.SelectedIndex = $progress.Items.Count - 1;
-					$progress.SelectedIndex = -1;
-					& 'C:\Program Files\7-Zip\7z.exe' e "C:\Computer Repair Centre\wallpapers.zip" "-oC:\Computer Repair Centre\Wallpapers"
-					& 'C:\Computer Repair Centre\themeSwitcher10.exe' "C:\Computer Repair Centre\computerRepairCentre10.theme"
-					}
-			$progress.Items.Add("Disabling stanby and monitor timeout when plugged in...")
-			$progress.SelectedIndex = $progress.Items.Count - 1;
-		  $progress.SelectedIndex = -1;
-			powercfg -change -standby-timeout-ac 0
-			powercfg -change -monitor-timeout-ac 0
-			$progress.Items.Add("The installer has finished! The installer will close in 20 seconds.")
-			$progress.SelectedIndex = $progress.Items.Count - 1;
-			$progress.SelectedIndex = -1;
-			}
-		if ($os -like '*10.0*')	{
-			$progress.Items.Add("This computer is running Windows 10.")
-			$progress.SelectedIndex = $progress.Items.Count - 1;
-			$progress.SelectedIndex = -1;
-			$progress.Items.Add("Setting explorer to open to This PC...")
-			$progress.SelectedIndex = $progress.Items.Count - 1;
-			$progress.SelectedIndex = -1;
-			Set-ItemProperty -path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced -name LaunchTo -value 1
-			$progress.Items.Add("Setting taskbar icons...")
-			$progress.SelectedIndex = $progress.Items.Count - 1;
-			$progress.SelectedIndex = -1;
-			Remove-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Taskband" -Name "Favorites"
-			& "C:\Computer Repair Centre\sysPin.exe" "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" c:5386
-			& "C:\Computer Repair Centre\sysPin.exe" "C:\Program Files\Mozilla Firefox\firefox.exe" c:5386
-			& "C:\Computer Repair Centre\sysPin.exe" "C:\Windows\explorer.exe" c:5386
-			$progress.Items.Add("Deleting Microsoft Edge from Desktop...")
-			$progress.SelectedIndex = $progress.Items.Count - 1;
-			$progress.SelectedIndex = -1;
-			Remove-Item "$Home\Desktop\Microsoft Edge.lnk" -Force
-			if ($wallpaper.Checked)	{
-					$progress.Items.Add("Set wallpapers is checked."  )
-					$progress.SelectedIndex = $progress.Items.Count - 1;
-					$progress.SelectedIndex = -1;
-					$progress.Items.Add("Setting wallpapers...")
-					$progress.SelectedIndex = $progress.Items.Count - 1;
-					$progress.SelectedIndex = -1;
-					Remove-Item "C:\Computer Repair Centre\Wallpapers" -Recurse -Force
-					& 'C:\Program Files\7-Zip\7z.exe' e "C:\Computer Repair Centre\wallpapers.zip" "-oC:\Computer Repair Centre\Wallpapers"
-					& 'C:\Computer Repair Centre\themeSwitcher10.exe' "C:\Computer Repair Centre\computerRepairCentre10.theme"
-					}
-			$progress.Items.Add("Disabling fastboot mode...")
-			$progress.SelectedIndex = $progress.Items.Count - 1;
-			$progress.SelectedIndex = -1;
-			Set-ItemProperty -path "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Power" -name HiberbootEnabled -value 0
-			$progress.Items.Add("Disabling Wi-Fi Sense...")
-			$progress.SelectedIndex = $progress.Items.Count - 1;
-			$progress.SelectedIndex = -1;
-			New-Item -Path HKLM:\Software\Microsoft\PolicyManager\default\WiFi\AllowWiFiHotSpotReporting -Force | Out-Null
-			Set-ItemProperty -Path "HKLM:\Software\Microsoft\PolicyManager\default\WiFi\AllowWiFiHotSpotReporting" -Name "Value" -Type DWord -Value 0
-			Set-ItemProperty -Path "HKLM:\Software\Microsoft\PolicyManager\default\WiFi\AllowAutoConnectToWiFiSenseHotspots" -Name "Value" -Type DWord -Value 0
-			$progress.Items.Add("Disabling People icon...")
-			$progress.SelectedIndex = $progress.Items.Count - 1;
-			$progress.SelectedIndex = -1;
-			New-Item -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People" | Out-Null
-			Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People" -Name "PeopleBand" -Type DWord -Value 0
-			$progress.Items.Add("Hiding recently used files and folders in Explorer...")
-			$progress.SelectedIndex = $progress.Items.Count - 1;
-			$progress.SelectedIndex = -1;
-			Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" -Name "ShowRecent" -Type DWord -Value 0
-			Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" -Name "ShowFrequent" -Type DWord -Value 0
-			$progress.Items.Add("Disabling Action Center...")
-			$progress.SelectedIndex = $progress.Items.Count - 1;
-			$progress.SelectedIndex = -1;
-			New-Item -Path "HKCU:\SOFTWARE\Policies\Microsoft\Windows\Explorer" | Out-Null
-			Set-ItemProperty -Path "HKCU:\SOFTWARE\Policies\Microsoft\Windows\Explorer" -Name "DisableNotificationCenter" -Type DWord -Value 1
-			Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\PushNotifications" -Name "ToastEnabled" -Type DWord -Value 0
-			$progress.Items.Add("Disabling stanby and monitor timeout when plugged in...")
-			$progress.SelectedIndex = $progress.Items.Count - 1;
-			$progress.SelectedIndex = -1;
-			powercfg -change -standby-timeout-ac 0
-			powercfg -change -monitor-timeout-ac 0
-			$progress.Items.Add("Auto-arranging Desktop icons...")
-			$progress.SelectedIndex = $progress.Items.Count - 1;
-			$progress.SelectedIndex = -1;
-			Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\Shell\Bags\1\Desktop" -Name "FFlags" -Type DWord -Value 1075839525
-			$progress.Items.Add("The installer has finished! The installer will close in 20 seconds.")
-			$progress.SelectedIndex = $progress.Items.Count - 1;
-			$progress.SelectedIndex = -1;
-			}
-		Start-Sleep -s 20
+		Invoke-RestMethod -Uri $northPointURL -OutFile $northPointPath
+		Start-Sleep -s 60
 		$installer.Close()
 		& "C:\Computer Repair Centre\close.ps1"
 	}
@@ -519,7 +91,7 @@ function GenerateForm {
 	    $installer.WindowState = $InitialFormWindowState
 	}
 #Main form
-	$installer.Text = "CRC Installer v2.6.0"
+	$installer.Text = "CRC Installer v2.7.0"
 	$installer.Name = "form1"
 	$installer.DataBindings.DefaultDataSourceUpdateMode = 0
 	$System_Drawing_Size = New-Object System.Drawing.Size

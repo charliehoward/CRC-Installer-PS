@@ -1,11 +1,17 @@
-# CRC Installer PowerShell 2.6.0
-###### © 2018 Charlie Howard
+# CRC Installer PowerShell 2.7.0 (FINAL)
+###### Copyright (c) Charlie Howard 2016-2018 All rights reserved.
 
 When run you will get a form that allows to select what programs you wish to install.
 Can install the CRC OEM information, 7-zip, Google Chrome, Kaspersky Internet Security 2019 (Unistalls Kaspersky Secure Connection), LibreOffice, Microsoft .NET 4.5, Microsoft .NET 4.6.1, Mozilla Firefox, PowerShell 5, TeamViewer & VLC Media Player.
 If run on Windows 8 and 8.1 it also changes the default Explorer page to "This PC".
 If run on Windows 10 it also disables Windows 10 hibernation mode, Wi-Fi sense, and changes the default Explorer page to "This PC".
 Sets a random wallpaper from selection.
+
+NorthPoint Installer has superseded this installer on GitLab - https://gitlab.com/charliehoward/NorthPointInstaller
+
+###### Update 2.7.0
+
+Migrated new version to GitLab (https://gitlab.com/charliehoward/NorthPointInstaller)
 
 ###### Update 2.6.0
 
